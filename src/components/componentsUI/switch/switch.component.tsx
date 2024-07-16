@@ -72,7 +72,7 @@ export default function CustomizedSwitches(label:any,lightObj:any) {
         setIsSwitchOn(true);
       }
     }    
-  }, [day]);  
+  }, [day,scene]);  
   return (    
     <>    
     <FormGroup>                

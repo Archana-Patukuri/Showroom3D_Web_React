@@ -3,8 +3,8 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { useDispatch, useSelector } from 'react-redux';
-import { dayNightSlice,dayNightToggle } from '../../../Redux/GlobalState/DayNightToggle';
-import { useEffect,useContext} from 'react';
+import { dayNightToggle } from '../../../Redux/GlobalState/DayNightToggle';
+import { useContext} from 'react';
 import { BasicContext } from '../../../contexts/basic.context';
 
 const DayNightSwitch = styled(Switch)(({ theme }) => ({

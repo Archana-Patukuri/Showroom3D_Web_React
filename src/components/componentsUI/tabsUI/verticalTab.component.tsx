@@ -4,7 +4,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import LoadModel from "../../ThreejsComponents/LoadModel";
+import LoadModel from "../../ThreejsComponents/ModelLoader/LoadModel";
 
 import HorizontalTabs from "./horizontalTab.component";
 import "./verticalTab.styles.css"
