@@ -9,18 +9,18 @@ const ViewpointValues=[
   },
   {
     x: 0.0479,
-    y: 4.165,
+    y: 1.165,
     z: 2.0533,
   },
   {
     x: 3.479,
-    y: 0.165,
-    z: 0,
+    y: 2.165,
+    z: 8,
   },
   {
-    x: 2.479,
+    x: 3.479,
     y: 2.165,
-    z: 2.433,
+    z: 8.433,
   },
   {
     x: 0.479,
@@ -35,7 +35,7 @@ const ViewpointValues=[
   {
     x: 0.2,
     y: 1.4,
-    z: -1.45,
+    z: 1.45,
   }
 ]
 const ViewpointsFun= () => {   
@@ -48,16 +48,14 @@ const ViewpointsFun= () => {
           tween.start();    
           tween.onComplete(() => {
             console.log('animation complete');           
-          });
-          camera.position.set(destination)
-          console.log('viewpoint clicked',destination)
+          });                  
           renderer.render(scene,camera)              
            }
     }
   return <>
     <div style={{fontSize:'12px'}}>
                             <div
-            className="d-flex flex-row"            
+                            className="d-flex flex-row"            
                             >
                               <input
                                 type="radio"
@@ -162,5 +160,4 @@ const ViewpointsFun= () => {
                           </div>
   </>
 };
-
 export default ViewpointsFun;

@@ -7,14 +7,17 @@ import TWEEN from '@tweenjs/tween.js';
 
 const ThreeScene: React.FC = () => {
   const mountRef = useRef<HTMLDivElement | null>(null);
-  let {scene,camera,setControls,renderer}=useContext(BasicContext)
+  let {scene,camera,setCamera,setControls,renderer}=useContext(BasicContext)
   
   useEffect(() => {          
     camera = new THREE.PerspectiveCamera(75, window.innerWidth/2 / window.innerHeight, 0.1, 1000);   
+    setCamera(camera)
    /*  const renderer = new THREE.WebGLRenderer({ antialias: true }); */
     renderer.setSize(window.innerWidth/2, window.innerHeight);   
      const controls = new OrbitControls(camera, renderer.domElement);
      setControls(controls)    
+     controls.minPolarAngle = 1.3;
+    controls.maxPolarAngle = 1.6;
     controls.minDistance = 2;
     controls.maxDistance = 20;
     controls.target.set(0, 1.5, 0);    
