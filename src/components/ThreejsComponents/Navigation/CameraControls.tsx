@@ -1,43 +1,17 @@
 import { BasicContext } from '../../../contexts/basic.context';
 import  { useContext} from 'react';
+import UpdateCameraControls from './CameraControlsFun';
 
 function CameraControlsFun(){      
-    let {controls}=useContext(BasicContext)      
-    const UpdateControls=(e:any,controls:any,val:string)=>{                
-        switch(val){
-            case 'zoom':
-                if(e.target.checked){
-                    controls.enableZoom=true
-                }else{
-                    controls.enableZoom=false
-                }
-                break
-            case 'pan':
-                if(e.target.checked){
-                    controls.enablePan=true
-                }else{
-                    controls.enablePan=false
-                }
-                break
-            case 'rotate':
-                if(e.target.checked){
-                    controls.enableRotate=true
-                }else{
-                    controls.enableRotate=false
-                }
-                break
-            default:
-                console.log('pls update controls')
-        }
-    }
+    let {controls}=useContext(BasicContext)        
     return <div >
-       <div>
+       
                             <input
                               type="checkbox"
                               className="btn-check navigation_Desktop"
                               id="zoom_Desktop"                              
                               autoComplete="off"                              
-                              onClick={(e)=>{UpdateControls(e,controls,'zoom')}}
+                              onClick={(e)=>{UpdateCameraControls(e,controls,'zoom')}}
                             />
                             <label htmlFor="zoom_Desktop"
                              >
@@ -65,7 +39,7 @@ function CameraControlsFun(){
                               className="btn-check navigation_Desktop"
                               id="pan_Desktop"
                               autoComplete="off"
-                              onClick={(e)=>{UpdateControls(e,controls,'pan')}}
+                              onClick={(e)=>{UpdateCameraControls(e,controls,'pan')}}
                             />
                             <label
                             //   for="pan_Desktop"
@@ -90,7 +64,7 @@ function CameraControlsFun(){
                               className="btn-check navigation_Desktop"
                               id="rotateScene_Desktop"
                               autoComplete="off"
-                              onClick={(e)=>{UpdateControls(e,controls,'rotate')}}
+                              onClick={(e)=>{UpdateCameraControls(e,controls,'rotate')}}
                             />
                             <label
                               htmlFor="rotateScene_Desktop"
@@ -130,8 +104,7 @@ function CameraControlsFun(){
                                   fill="#666666"
                                 />
                               </svg>
-                            </label>
-                          </div>
+                            </label>                          
     </div>                    
 };
 
