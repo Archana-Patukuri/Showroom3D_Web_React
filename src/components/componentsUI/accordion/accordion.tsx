@@ -9,7 +9,19 @@ export default function AccordionUsage(accordionProps:any) {
     const {accordionLabel,accordionDetails}=accordionProps    
   return (
     <div>    
-      <Accordion style={{maxWidth:"15vw",margin:"0px"}} className='accordion-container'>
+      {accordionLabel==='Navigation'?<Accordion style={{maxWidth:"15vw",margin:"0px"}} className='accordion-container' defaultExpanded >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel-content"
+          id="panel-header"
+          className='accordion-label'                
+        >
+          {accordionLabel}
+        </AccordionSummary>
+        <AccordionDetails className='accordion-text'>
+          {accordionDetails}         
+        </AccordionDetails>        
+      </Accordion>:<Accordion style={{maxWidth:"15vw",margin:"0px"}} className='accordion-container' >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel-content"
@@ -21,7 +33,8 @@ export default function AccordionUsage(accordionProps:any) {
         <AccordionDetails className='accordion-text'>
           {accordionDetails}         
         </AccordionDetails>        
-      </Accordion>
+      </Accordion>}
+      
     </div>
   );
 }

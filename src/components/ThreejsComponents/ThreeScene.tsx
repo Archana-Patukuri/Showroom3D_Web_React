@@ -34,7 +34,7 @@ const ThreeScene: React.FC = () => {
 
     camera.position.z = 4;    
     camera.position.y = 1.5;
-
+console.log(camera.position)
     const renderScene = () => {
       requestAnimationFrame(renderScene);
       TWEEN.update();

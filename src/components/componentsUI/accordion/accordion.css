@@ -4,10 +4,15 @@
     border-bottom:  2px solid #E5E5E5 !important;
     border-radius: 0px !important;
 }
+
 .accordion-label{
     color: #27282D !important; 
     font-weight:  600;
     height: 10px !important;     
+}
+.accordion-label:hover{
+    background-color: #FF5A50;  
+    color: #fff !important;  
 }
 .accordion-text{
     color: #27282D !important; 

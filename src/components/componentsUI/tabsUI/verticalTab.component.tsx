@@ -5,11 +5,16 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import LoadModel from "../../ThreejsComponents/ModelLoader/LoadModel";
-
+import { styled } from '@mui/system';
 import HorizontalTabs from "./horizontalTab.component";
 import "./verticalTab.styles.css"
 
-function TabPanel(props:any) {
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
+function TabPanel(props:TabPanelProps) {
   const { children, value, index, ...other } = props;
 
   return (
@@ -46,11 +51,26 @@ function a11yProps(index:any) {
  const VerticalTabs=()=> {
   const [value, setValue] = React.useState(0);  
 
-  const handleChange = (event:any, newValue:any) => {
+  const handleChange = (event:React.SyntheticEvent, newValue:number) => {
     console.log(event)
     setValue(newValue);
   };
   
+
+const CustomTab = styled(Tab)(({ theme }) => ({
+  color: '#27282D',
+  backgroundColor: 'white',
+  '&.Mui-selected': {
+    backgroundColor: '#FF5A50',
+    color: 'white',
+  },
+  height:'10px',
+  maxHeight:'10px',
+  padding:'0px'
+}));
+
+
+
   return (
     <Box
       sx={{
@@ -58,26 +78,26 @@ function a11yProps(index:any) {
         bgcolor: "#F5F5F5",
         display: "flex",                
         borderRight: 1,
-         borderColor: "divider" ,        
-        fontSize:"12px"        
+         borderColor: "divider" , 
+        //  height:'100vh'               
       }}
     >
       <Tabs
         orientation="vertical"
-        //  variant="scrollable"
+         variant="scrollable"
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: "divider",overflow:"auto" }}
+        sx={{ borderRight: 1, borderColor: "divider",overflow:"auto"}}        
       >
-        <Tab label="Sample Room" {...a11yProps(0)} className="top_buttons" sx={{height:'500'}}/>
-        <Tab label="Furniture" {...a11yProps(1)} className="top_buttons"/>
-        <Tab label="Lighting" {...a11yProps(2)} className="top_buttons"/>
-        <Tab label="Paints" {...a11yProps(3)} className="top_buttons"/>
-        <Tab label="Tiles" {...a11yProps(4)} className="top_buttons"/>
-        <Tab label="Carpets" {...a11yProps(5)} className="top_buttons"/>
-        <Tab label="Doors/Windows" {...a11yProps(6)} className="top_buttons"/>
-        <Tab label="Accessories" {...a11yProps(7)} className="top_buttons"/>
+        <CustomTab label="Sample Room" {...a11yProps(0)} className="top_buttons"/>
+        <CustomTab label="Furniture" {...a11yProps(1)} className="top_buttons"/>
+        <CustomTab label="Lighting" {...a11yProps(2)} className="top_buttons"/>
+        <CustomTab label="Paints" {...a11yProps(3)} className="top_buttons"/>
+        <CustomTab label="Tiles" {...a11yProps(4)} className="top_buttons"/>
+        <CustomTab label="Carpets" {...a11yProps(5)} className="top_buttons"/>
+        <CustomTab label="Doors/Windows" {...a11yProps(6)} className="top_buttons"/>
+        <CustomTab label="Accessories" {...a11yProps(7)} className="top_buttons"/>
 
         <Tab label="360Spins" {...a11yProps(8)}  style={{marginTop:"30vh"}} className="bottom_buttons"/>
         <Tab label="Measurements" {...a11yProps(9)} className="bottom_buttons"/>

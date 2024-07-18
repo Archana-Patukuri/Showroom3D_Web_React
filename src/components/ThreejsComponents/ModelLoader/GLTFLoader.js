@@ -32,7 +32,7 @@ function GLTFLoaderFun(scene,url){
                if(gltf.scene.children[0].children[5].type==="PointLight"){
                 gltf.scene.position.x+=1.5                                                            
               }                
-            console.log(gltf.scene)   
+            // console.log(gltf.scene)   
             return gltf
             
           },
