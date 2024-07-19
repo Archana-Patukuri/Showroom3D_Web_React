@@ -10,17 +10,20 @@ const Reset= () => {
                     <div>
                       <img
                         src="./icons/desktopUI/Undo.svg"
+                        alt=''
                         width="15px"
                         height="15px"
                         style={{paddingRight:'5px'}}
                       />
                       <img
+                      alt=''
                         src="./icons/desktopUI/Redo.svg"
                         width="15px"
                         height="15px"
                       />
                     </div>
                     <img
+                    alt=''
                       id="reset_Desktop"
                       src="./icons/desktopUI/reset.svg"
                       width="15px"
