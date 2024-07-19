@@ -8,6 +8,7 @@ import LoadModel from "../../ThreejsComponents/ModelLoader/LoadModel";
 import { styled } from '@mui/system';
 import HorizontalTabs from "./horizontalTab.component";
 import "./verticalTab.styles.css"
+import UnstyledTabsCustomized from "./horizontalTabs";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -112,7 +113,7 @@ const CustomTab = styled(Tab)(({ theme }) => ({
         <LoadModel/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <HorizontalTabs/>
+        <UnstyledTabsCustomized/>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <HorizontalTabs/>

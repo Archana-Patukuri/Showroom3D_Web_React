@@ -1,6 +1,8 @@
 import TWEEN from '@tweenjs/tween.js';
 import  { useContext} from 'react';
 import { BasicContext } from '../../../contexts/basic.context';
+import './Viewpoints.css';
+
 const ViewpointValues=[
   {
     x: -0.05,
@@ -59,7 +61,7 @@ const ViewpointsFun= () => {
                             >
                               <input
                                 type="radio"
-                                className="Viewpoints_Desktop largerCheckbox"
+                                className="largerCheckbox"
                                 id="Main_View"
                                 name="viewPoints"                                
                                 value="0"
@@ -73,17 +75,11 @@ const ViewpointsFun= () => {
                             >
                               <input
                                 type="radio"
-                                className="Viewpoints_Desktop largerCheckbox"
+                                className="largerCheckbox"
                                 id="Table_View"
                                 name="viewPoints"
                                 value="1"
-                                onChange={(e)=>{ const tween = new TWEEN.Tween(camera.position).to(ViewpointValues[1], 1500);
-                                  tween.easing(TWEEN.Easing.Sinusoidal.InOut);
-                                  tween.start();    
-                                  tween.onComplete(() => {
-                                    console.log('animation complete');           
-                                  });
-                                  camera.position.set(ViewpointValues[1])}}
+                                onChange={(e)=>{ViewPointsHandler(e,ViewpointValues[1])}}
                               />
                               <label>Table</label>
                             </div>
@@ -93,7 +89,7 @@ const ViewpointsFun= () => {
                             >
                               <input
                                 type="radio"
-                                className="Viewpoints_Desktop largerCheckbox"
+                                className="largerCheckbox"
                                 id="Chair_view"
                                 name="viewPoints"
                                 value="2"
@@ -107,7 +103,7 @@ const ViewpointsFun= () => {
                             >
                               <input
                                 type="radio"
-                                className="Viewpoints_Desktop largerCheckbox"
+                                className="largerCheckbox"
                                 id="Blinds_View"
                                 name="viewPoints"
                                 value="3"
@@ -121,7 +117,7 @@ const ViewpointsFun= () => {
                             >
                               <input
                                 type="radio"
-                                className="Viewpoints_Desktop largerCheckbox"
+                                className="largerCheckbox"
                                 id="Ceiling_View"
                                 name="viewPoints"
                                 value="4"
@@ -135,7 +131,7 @@ const ViewpointsFun= () => {
                             >
                               <input
                                 type="radio"
-                                className="Viewpoints_Desktop largerCheckbox"
+                                className="largerCheckbox"
                                 id="Back_View"
                                 name="viewPoints"
                                 value="5"
@@ -149,7 +145,7 @@ const ViewpointsFun= () => {
                             >
                               <input
                                 type="radio"
-                                 className="Viewpoints_Desktop largerCheckbox"
+                                 className="largerCheckbox"
                                 id="Monitot_View"
                                 name="viewPoints"
                                 value="6"

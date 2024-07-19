@@ -4,9 +4,9 @@ import VerticalTabs from './components/componentsUI/tabsUI/verticalTab.component
 import AccordionUsage from './components/componentsUI/accordion/accordion';
 import SelectSmall from './components/componentsUI/dropdown/dropdown';
 import LightControls from './components/ThreejsComponents/LightControls/LightControls';
-import ViewpointsFun from './components/ThreejsComponents/Viewpoints/Viewpoints';
 import CameraControlsFun from './components/ThreejsComponents/Navigation/CameraControlsUI';
 import Reset from './components/ThreejsComponents/Reset';
+import ViewpointsFun from './components/ThreejsComponents/Viewpoints/Viewpoints';
 
 function App() {
   let label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."  
@@ -24,7 +24,7 @@ function App() {
         <VerticalTabs />
         </div>
         <div style={{maxWidth:"10vw",overflow:"auto",backgroundColor:'#F5F5F5'}}>
-          <div style={{display:'flex',justifyContent:'space-between',padding:'5px',borderBottom:'2px solid #E5E5E5'}}>
+          <div style={{display:'flex',justifyContent:'space-between',padding:'5px',borderBottom:'1px solid #E5E5E5'}}>
           <Reset/>
           </div>
           <AccordionUsage accordionLabel={"Navigation"} accordionDetails={<CameraControlsFun/>} />
