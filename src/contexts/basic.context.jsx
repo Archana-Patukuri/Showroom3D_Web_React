@@ -9,6 +9,10 @@ export const BasicProvider = ({ children }) => {
   let [controls, setControls] = useState(new THREE.Object3D());
   let [renderer, setRenderer] = useState(new THREE.WebGLRenderer()); 
   let [model, setModel] = useState(new THREE.Object3D());
+  let [background0, setbackground0] = useState(new THREE.Object3D());
+  let [background1, setbackground1] = useState(new THREE.Object3D());
+  let [hdri1, sethdri1] = useState(new THREE.Object3D());
+  let [hdri2, sethdri2] = useState(new THREE.Object3D());
   let value = {
     scene,
     setScene,
@@ -19,7 +23,15 @@ export const BasicProvider = ({ children }) => {
     renderer,
     setRenderer,
     model,
-    setModel
+    setModel,
+    background0,
+    setbackground0,
+    background1,
+    setbackground1,
+    hdri1,    
+    sethdri1,
+    hdri2,
+    sethdri2       
   };
   return (
     <BasicContext.Provider value={value}>{children}</BasicContext.Provider>

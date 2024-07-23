@@ -42,7 +42,7 @@ const ViewpointValues=[
 ]
 const ViewpointsFun= () => {   
   let {scene,camera,renderer}=useContext(BasicContext) 
-    const ViewPointsHandler=(e,destination)=>{           
+    const ViewPointsHandler=(e:any,destination:any)=>{           
         if (e.target.checked) {
           
           const tween = new TWEEN.Tween(camera.position).to(destination, 1500);

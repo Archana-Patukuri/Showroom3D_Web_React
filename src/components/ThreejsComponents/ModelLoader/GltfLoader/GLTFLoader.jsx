@@ -1,9 +1,9 @@
 import { GLTFLoader } from 'three-stdlib';
 import { DRACOLoader } from 'three-stdlib';
-import addModelFun from '../Themes/Themes';
+import addModelFun from '../../Themes/Themes';
 import GLTFMaterialsVariantsExtension from 'three-gltf-extensions/loaders/KHR_materials_variants/KHR_materials_variants'
 
-function GLTFLoaderFun(scene,url){  
+async function GLTFLoaderFun(scene,url){  
  
         const dracoLoader = new DRACOLoader();
         dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');    
@@ -25,13 +25,19 @@ function GLTFLoaderFun(scene,url){
             } 
             if(gltf.scene.children[0].name==="Room_103"){
               let sun=scene.getObjectByName('Sun')
-              sun.intensity=5         
+              sun.intensity=2  
+              sun.castShadow=true      
             }  
-            
+            scene.traverse((item) => {
+              if(item.isMesh){
+                item.castShadow=true
+                item.recieveShadow=true                
+              }
+            });
                       
-               if(gltf.scene.children[0].children[5].type==="PointLight"){
+               /* if(gltf.scene.children[0].children[5].type==="PointLight"){
                 gltf.scene.position.x+=1.5                                                            
-              }                
+              }   */              
             // console.log(gltf.scene)   
             return gltf
             

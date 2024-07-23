@@ -1,4 +1,4 @@
-import GLTFLoaderFun from './GLTFLoader';
+import GLTFLoaderFun from './GltfLoader/GLTFLoader';
 import { BasicContext } from '../../../contexts/basic.context';
 import  { useContext} from 'react';
 import Button from '@mui/material/Button';

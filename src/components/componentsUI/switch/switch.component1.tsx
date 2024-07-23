@@ -64,7 +64,7 @@ export default function CustomDayNightSwitch() {
     let sun:any=scene.getObjectByName('Sun')   
     dispatch(dayNightToggle());     
      if(day && sun){      
-      sun.intensity=5
+      sun.intensity=2
     }else{
       sun.intensity=0      
     } 
