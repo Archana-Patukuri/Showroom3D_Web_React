@@ -4,7 +4,7 @@ import {
 } from 'three';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
 import { LoadingManager } from 'three';
-import * as THREE from 'three';
+// import * as THREE from 'three';
  const HdriLoad = (scene:any) => {
   const manager = new LoadingManager();
   manager.onError = (url) => {
