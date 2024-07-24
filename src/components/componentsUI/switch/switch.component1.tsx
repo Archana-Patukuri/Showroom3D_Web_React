@@ -55,7 +55,7 @@ const DayNightSwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function CustomDayNightSwitch() {
-  let {scene}=useContext(BasicContext)    
+  let {scene,renderer}=useContext(BasicContext)    
 
   const dispatch = useDispatch();
   const { day } = useSelector((state: any) => state.dayNightSlice);
@@ -65,8 +65,10 @@ export default function CustomDayNightSwitch() {
     dispatch(dayNightToggle());     
      if(day && sun){      
       sun.intensity=2
+      renderer.toneMappingExposure=0.5
     }else{
       sun.intensity=0      
+      renderer.toneMappingExposure=0.1
     } 
   }
  /*  useEffect(() => {

@@ -2,7 +2,7 @@
 let RoomLoaded=false
 function addModelFun(gltfData:any,scene:any){    
   scene.add(gltfData.scene);       
-       console.log(gltfData.scene.children[0].name)
+      //  console.log(gltfData.scene.children[0].name)
        if(RoomLoaded===true){
         return
        }

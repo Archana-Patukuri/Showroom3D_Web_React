@@ -37,7 +37,7 @@ const PostProcessing= (composer:any,scene:any,camera:any) => {
       size.height
     );
     composer.addPass(ssaoPass)
-    console.log('SSAO ADDED',composer)
+    // console.log('SSAO ADDED',composer)
   //  const saoPass = new SAOPass(scene, camera,new Vector2(size.width, size.height));   
 
     const gammaCorrectinoPass = new ShaderPass(GammaCorrectionShader);

@@ -1,0 +1,377 @@
+{
+  "Room": [
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Room/Roop_physics_2.glb",
+      "Name": "Room"
+    }
+  ],
+  "Accessories": [
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Accessories/Frames_Feb_16_v2.glb",
+      "Name": "Frame",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/accessories/Frames_Feb_16_v2.webp",
+      "name": "frame",
+      "position": {
+        "x": 1.88317,
+        "y": 1.70503,
+        "z": -0.041898
+      },
+      "isWallObject": true,
+      "category": "Accessories"
+    },
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Accessories/vase_apr_30.glb",
+      "Name": "Vase",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/accessories/Vase.webp",
+      "name": "vase",
+      "position": {
+        "x": -1.7,
+        "y": 0,
+        "z": 1.7
+      },
+      "isWallObject": false,
+      "physicsEnabled": true,
+      "category": "Accessories"
+    },
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Accessories/Mirror_Feb_16.glb",
+      "Name": "Mirror",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/accessories/Mirror.webp",
+      "name": "mirror",
+      "position": {
+        "x": -0.05,
+        "y": 1.9,
+        "z": -1.92
+      },
+      "isWallObject": true,
+      "category": "Accessories"
+    }
+  ],
+  "tableTopAccessories": [
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Accessories/Flower_Pot.glb",
+      "Name": "Flower Pot",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/accessories/FlowerPot.webp",
+      "regular": false,
+      "name": "flowerpot",
+      "position": {
+        "x": -0.90015,
+        "y": 1.02,
+        "z": 0.09
+      },
+      "category": "tableTopAccessories",
+      "physicsEnabled": true,
+      "isTableObject": true,
+      "isWallObject": false
+    },
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Accessories/Ergonomicstand_With_Monitor.glb",
+      "Name": "Monitor",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/accessories/Ergonomicstand_With_Monitor.webp",
+      "regular": false,
+      "name": "monitor",
+      "position": {
+        "x": -0.05,
+        "y": 1.11,
+        "z": 0.375783
+      },
+      "category": "tableTopAccessories",
+      "physicsEnabled": true,
+      "isTableObject": true,
+      "isWallObject": false
+    }
+  ],
+  "tableVase": [
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Accessories/Flower_Pot.glb",
+      "Name": "Flower Pot",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/accessories/FlowerPot.webp",
+      "regular": false,
+      "name": "flowerpot",
+      "position": {
+        "x": -0.90015,
+        "y": 1.02,
+        "z": 0.09
+      },
+      "category": "tableTopAccessories",
+      "physicsEnabled": true,
+      "isTableObject": true,
+      "isWallObject": false
+    }
+  ],
+  "tableMonitor": [
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Accessories/Ergonomicstand_With_Monitor.glb",
+      "Name": "Monitor",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/accessories/Ergonomicstand_With_Monitor.webp",
+      "regular": false,
+      "name": "monitor",
+      "position": {
+        "x": -0.05,
+        "y": 1.11,
+        "z": 0.375783
+      },
+      "category": "tableTopAccessories",
+      "physicsEnabled": true,
+      "isTableObject": true,
+      "isWallObject": false
+    }
+  ],
+  "blindsModels": [
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Blinds/blind_03/Blinds_03_v01_draco.glb",
+      "Name": "Blinds_Horizontal",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/blinds/Blinds_03_v01.webp",
+      "spin_value": "Horizontal_Blind",
+      "spin_description": "Light Filtering Blinds for Windows, Horizontal Window Blinds, Shades for Indoor Windows with different material variants i.e Wooden,Grey and Translucent, 58”D x 6” W x 71” H",
+      "position": {
+        "x": -1.99528,
+        "y": 1.71393,
+        "z": -0.037798
+      },
+      "category": "blindsModels",
+      "oneInScene": true
+    },
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Blinds/blind_01/Blinds_01_v01_draco.glb",
+      "Name": "Blinds_Vertical",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/blinds/Blinds_01_v01.webp",
+      "spin_value": "Vertical_Blind",
+      "spin_description": "Vertical Window Shades",
+      "position": {
+        "x": -1.94528,
+        "y": 1.71393,
+        "z": -0.037798
+      },
+      "category": "blindsModels",
+      "oneInScene": true
+    },
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Blinds/blind_02/Blinds_02_v01_draco.glb",
+      "Name": "Blinds_RollUp",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/blinds/Blinds_02_v01.webp",
+      "spin_value": "Rollup_Blind",
+      "spin_description": "RollUp Window Shades",
+      "position": {
+        "x": -1.99528,
+        "y": 1.71393,
+        "z": -0.037798
+      },
+      "category": "blindsModels",
+      "oneInScene": true
+    }
+  ],
+  "shelfModels": [
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/shelf/shelf_apr_30.glb",
+      "Name": "Shelf",
+      "name": "Shelf Lamp",
+      "lightName": "shelfLamp",
+      "lightId": "shelfLamp",
+      "position": {
+        "x": 1.6,
+        "y": 0,
+        "z": 1.8
+      },
+      "category": "shelfModels"
+    }
+  ],
+  "tableModels": [
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Tables/table/Table_Automatic_01_v01.glb",
+      "Name": "Motarized",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/tables/Table_Automatic_01_v01.webp",
+      "spin_value": "Table1",
+      "spin_description": "Manual Height Adjustable Home Office Computer Desk, Large Curved Edge Standing PC Gaming Table Workstation With Different Material Variants Black Leather,Brown Leather and Red Leather, 90D x 30W x 36H",
+      "lightId": "tableLamp",
+      "lightName": "Table Lamp",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0.2
+      },
+      "category": "tableModels",
+      "objectVariant": "1"
+    },
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Tables/table/Table_Manual_01_noObjects.glb",
+      "Name": "Manual",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/tables/Table_Manual_01_v01.webp",
+      "spin_value": "Table2",
+      "spin_description": "Motorized Height Adjustable Home Office Computer Desk, Large Curved Edge Standing PC Gaming Table Workstation with different material variants like Pine Wood,Red Pearwood and Walnut Wood, 78D x 39W x 34H",
+      "lightId": "tableLamp",
+      "lightName": "Table Lamp",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0.2
+      },
+      "newPosition": {
+        "y": 0.12
+      },
+      "category": "tableModels",
+      "objectVariant": "2"
+    },
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Tables/table/Table_Small_01_noObjects_new1.glb",
+      "Name": "Small",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/tables/Table_Small_01_v01.webp",
+      "spin_value": "Table3",
+      "spin_description": "Small Height Adjustable Home Office Computer Desk, Large Curved Edge Standing PC Gaming Table Workstation with different marble variants like Explosionblue,Greyvision and Starblack, 43D x 23W x 34H",
+      "lightId": "tableLamp",
+      "lightName": "Table Lamp",
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0.2
+      },
+      "newPosition": {
+        "y": 0.95,
+        "z": 0.4
+      },
+      "category": "tableModels",
+      "objectVariant": "3"
+    }
+  ],
+  "chairModels": [
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Chairs/chair_01/Chair_01_v01.glb",
+      "Name": "Bucket Seat",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/chairs/Chair_01_v01.webp",
+      "spin_value": "Chair1",
+      "spin_description": "Basics Upholstered Home Office 360 Degree Bucket Seat Chair with Adjustable-Height,rotate and back rest, containing three different variants of ConiferWood OrangeLeather,MahoganyWood BrownLeather and BlackLeather, 30D x 30W x 44H",
+      "position": {
+        "x": 0.06,
+        "y": 0,
+        "z": -0.9
+      },
+      "category": "chairModels",
+      "objectVariant": "1"
+    },
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Chairs/chair_02/Chair_02_Feb_8.glb",
+      "Name": "Basic",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/chairs/Chair_02_v01.webp",
+      "spin_value": "Chair2",
+      "spin_description": "Basics Home Office 360 Degree Seat Chair with Adjustable-Height,rotate and handle, containing three different variants of Black,Blue and Copper, 42D x 42W x 54H",
+      "position": {
+        "x": 0,
+        "y": 0.049977,
+        "z": -0.9
+      },
+      "category": "chairModels",
+      "objectVariant": "2"
+    },
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Chairs/chair_03/Chair_03_v01.glb",
+      "Name": "Advanced",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/chairs/Chair_03_v01.webp",
+      "spin_value": "Chair3",
+      "spin_description": "Home Office 360 Degree Seat Chair with Adjustable-Height,rotate and back rest, containing three different variants of Fabric,Leather and Pattern, 50D x 27W x 2H",
+      "position": {
+        "x": -0.04,
+        "y": 0,
+        "z": -0.9
+      },
+      "category": "chairModels",
+      "objectVariant": "3"
+    }
+  ],
+  "lights": [
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/lights/desk_lamp/Desk_Lamp.glb",
+      "Name": "Desktop Light",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/lights/Table_Lamp_01_v01.webp",
+      "spin_value": "Desktop_Lamp",
+      "spin_description": "Desktop light",
+      "lightName": "Table Lamp",
+      "lightId": "tableLamp",
+      "position": {
+        "x": 1,
+        "y": 1.02,
+        "z": 0
+      },
+      "category": "lights",
+      "physicsEnabled": true,
+      "oneInScene": true,
+      "isTableObject": true,
+      "isWallObject": false
+    },
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/lights/Floor_Lamp_small/floorLamp_Jan_11.glb",
+      "Name": "Floor Lamp",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/lights/Floor_Lamp_small.webp",
+      "spin_value": "Floor_Lamp",
+      "spin_description": "Floor light",
+      "lightName": "FloorLamp",
+      "lightId": "FloorLamp",
+      "position": {
+        "x": -1.5,
+        "y": -0.1,
+        "z": -1.4
+      },
+      "category": "lights",
+      "physicsEnabled": true,
+      "isWallObject": false,
+      "oneInScene": true
+    },
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/lights/Left_Wall_Lamp/Wall_Lamp_feb_19.glb",
+      "Name": "Wall Lamp",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/lights/WallLamp.webp",
+      "spin_value": "Wall_Lamp",
+      "spin_description": "Wall light",
+      "lightName": "WallLamp",
+      "lightId": "WallLamp",
+      "position": {
+        "x": 1.8791,
+        "y": 2.20496,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": -1.57,
+        "z": 0
+      },
+      "category": "lights",
+      "physicsEnabled": false,
+      "oneInScene": true,
+      "isWallObject": true
+    },
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/lights/cylindrical_wall_lamp/cylindrical_wall_lamp_draco.glb",
+      "Name": "Wall Washer Light",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/lights/wall_washer_light.webp",
+      "lightName": "Wall Washer Light",
+      "spin_value": "Wall_Washer_Light",
+      "lightId": "WallWasherLight",
+      "spin_description": "Wall Washer light with cookie effect",
+      "position": {
+        "x": 0,
+        "y": 2,
+        "z": -1.89099
+      },
+      "category": "lights",
+      "physicsEnabled": false,
+      "oneInScene": true,
+      "isWallObject": true,
+      "needsTarget": true
+    }
+  ],
+  "LoungChair": [
+    {
+      "URL": "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Chairs/lounge_chair/loung_jan12.glb",
+      "Name": "LoungChair",
+      "thumbnail": "https://d3t7cnf9sa42u5.cloudfront.net/thumbnails/chairs/Chair03.webp",
+      "spin_value": "Lounge_Chair",
+      "spin_description": "Lounge Chair",
+      "position": {
+        "x": 1,
+        "y": 0,
+        "z": -0.4
+      },
+      "objectVariant": "1",
+      "category": "loungeChairModels"
+    }
+  ]
+}

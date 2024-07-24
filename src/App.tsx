@@ -1,5 +1,5 @@
 import './App.css';
-import ThreeScene from './components/ThreejsComponents/ThreeScene';
+import ThreeScene from './components/ThreejsComponents/BasicComponents/ThreeScene';
 import VerticalTabs from './components/componentsUI/tabsUI/verticalTab.component';
 import AccordionUsage from './components/componentsUI/accordion/accordion';
 import SelectSmall from './components/componentsUI/dropdown/dropdown';

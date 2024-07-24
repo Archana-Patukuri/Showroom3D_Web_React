@@ -17,11 +17,13 @@ async function GLTFLoaderFun(scene,url){
             // scene.add(gltf.scene);            
             addModelFun(gltf,scene)
                if(gltf.scene.children[0].name==="Chair_101"){
-              gltf.scene.position.x-=0.5
-              console.log(gltf.scene.children[0].name)       
+              gltf.scene.position.x-=0.5                  
             }  
             if(gltf.scene.children[0].name==="Table_101"){
               gltf.scene.position.z+=1                                     
+            }             
+            if(gltf.scene.children[0].name==="Blind_102"){
+              gltf.scene.position.set(-1.99528,1.71393,-0.037798)                                   
             } 
             if(gltf.scene.children[0].name==="Room_103"){
               let sun=scene.getObjectByName('Sun')
@@ -29,10 +31,10 @@ async function GLTFLoaderFun(scene,url){
               sun.castShadow=true      
             }  
             scene.traverse((item) => {
-              if(item.isMesh){
+              // if(item.isMesh){
                 item.castShadow=true
                 item.recieveShadow=true                
-              }
+              // }
             });
                       
                /* if(gltf.scene.children[0].children[5].type==="PointLight"){

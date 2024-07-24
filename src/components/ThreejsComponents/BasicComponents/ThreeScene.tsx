@@ -1,35 +1,32 @@
-import React, { useRef, useEffect ,useContext} from 'react';
-import * as THREE from 'three';
-import GLTFLoaderFun from './ModelLoader/GltfLoader/GLTFLoader';
-import { BasicContext } from '../../contexts/basic.context';
+import { useRef, useEffect ,useContext} from 'react';
+import GLTFLoaderFun from '../ModelLoader/GltfLoader/GLTFLoader';
+import { BasicContext } from '../../../contexts/basic.context';
 import TWEEN from '@tweenjs/tween.js';
 import {  createCamera,createCameraControls, createRenderer } from './BasicComponents';
-import HdriLoad from './ModelLoader/HdriLoader/HdriLoader';
+import HdriLoad from '../ModelLoader/HdriLoader/HdriLoader';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
-import PostProcessing from './PostProcessing/post-processing';
+import PostProcessing from '../PostProcessing/post-processing';
 
 let composer:any,container:any
 const ThreeScene = () => {
   const mountRef = useRef<HTMLDivElement | null>(null);    
   let { scene,setCamera,setControls,setRenderer}=useContext(BasicContext)
   let url='https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Room/Roop_physics_2.glb'
+  let url1='https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Blinds/blind_03/Blinds_03_v01_draco.glb'
   GLTFLoaderFun(scene,url)   
+  GLTFLoaderFun(scene,url1)
   HdriLoad(scene)
-  useEffect(() => {                
+  useEffect(() => { 
+                   
     const camera = createCamera(mountRef.current);
     const renderer = createRenderer(mountRef.current);
-   const controls=createCameraControls(camera,renderer)     
-  setCamera(camera)
-  setRenderer(renderer)
-  setControls(controls)
-  composer = new EffectComposer(renderer);
-  
-     const light = new THREE.AmbientLight(0x404040); // soft white light
-    scene.add(light);
-    scene.background=new THREE.Color(1,1,1) 
+    const controls=createCameraControls(camera,renderer)     
+    setCamera(camera)
+    setRenderer(renderer)
+    setControls(controls)
+  composer = new EffectComposer(renderer);       
    
-    PostProcessing(composer,scene,camera)
-    renderer.toneMappingExposure=1
+    PostProcessing(composer,scene,camera)    
      camera.position.z = 4;    
     camera.position.y = 1.5; 
     
