@@ -6,18 +6,23 @@ import {  createCamera,createCameraControls, createRenderer } from './BasicCompo
 import HdriLoad from '../ModelLoader/HdriLoader/HdriLoader';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import PostProcessing from '../PostProcessing/post-processing';
+import DragAndDrop from '../DragAndDrop/DragAndDrop';
 
 let composer:any,container:any
 const ThreeScene = () => {
-  const mountRef = useRef<HTMLDivElement | null>(null);    
-  let { scene,setCamera,setControls,setRenderer}=useContext(BasicContext)
+  const mountRef = useRef<HTMLDivElement | null>(null);      
+  let { scene,setCamera,setControls,setRenderer,background1,hdri1,setContainer}=useContext(BasicContext)
+  
+  scene.background=background1
+  scene.environment=hdri1
   let url='https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Room/Roop_physics_2.glb'
   let url1='https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Blinds/blind_03/Blinds_03_v01_draco.glb'
   GLTFLoaderFun(scene,url)   
   GLTFLoaderFun(scene,url1)
-  HdriLoad(scene)
+  DragAndDrop()
+  HdriLoad() 
   useEffect(() => { 
-                   
+       
     const camera = createCamera(mountRef.current);
     const renderer = createRenderer(mountRef.current);
     const controls=createCameraControls(camera,renderer)     
@@ -51,13 +56,14 @@ const ThreeScene = () => {
 
     window.addEventListener('resize', handleResize);
     container=mountRef.current
+    setContainer(container)
     return () => {
       window.removeEventListener('resize', handleResize);
       if (container) {
         container.removeChild(renderer.domElement);
       }
     };
-  }, [scene,setCamera,setControls,setRenderer ]);
+  }, [scene,setCamera,setControls,setRenderer,setContainer ]);
 
   return <div ref={mountRef} style={{width:'60vw',height:'100vh'}}/>;
 };

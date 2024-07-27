@@ -13,6 +13,7 @@ export const BasicProvider = ({ children }) => {
   let [background1, setbackground1] = useState(new THREE.Object3D());
   let [hdri1, sethdri1] = useState(new THREE.Object3D());
   let [hdri2, sethdri2] = useState(new THREE.Object3D());
+  let [container, setContainer] = useState('');
   let value = {
     scene,
     setScene,
@@ -31,7 +32,9 @@ export const BasicProvider = ({ children }) => {
     hdri1,    
     sethdri1,
     hdri2,
-    sethdri2       
+    sethdri2,
+    container,
+    setContainer    
   };
   return (
     <BasicContext.Provider value={value}>{children}</BasicContext.Provider>

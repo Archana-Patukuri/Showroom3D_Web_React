@@ -1,0 +1,14 @@
+.thumbnail{
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    background-color: white;
+    margin: 5px;
+    padding: 5px;
+}
+.thumbnail:active{
+    background-color: #FF5A50;
+}
+.thumbnail:hover{
+    background-color: #FF5A50;
+}
