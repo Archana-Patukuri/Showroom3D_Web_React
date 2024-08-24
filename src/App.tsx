@@ -7,7 +7,8 @@ import LightControls from './components/ThreejsComponents/LightControls/LightCon
 import CameraControlsFun from './components/ThreejsComponents/Navigation/CameraControlsUI';
 import Reset from './components/ThreejsComponents/Reset';
 import ViewpointsFun from './components/ThreejsComponents/Viewpoints/Viewpoints';
-
+import VariantsFun from './components/ThreejsComponents/ObjectActions/MaterialVariants';
+import DimensionsFun from './components/ThreejsComponents/ObjectActions/Dimensions';
 function App() {
   let label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."  
   return (            
@@ -31,8 +32,11 @@ function App() {
           <AccordionUsage accordionLabel={"Arrangement"} accordionDetails={label}/>
           <AccordionUsage accordionLabel={"Themes"} accordionDetails={<div id='Themes_Desktop'></div>}/>
           <AccordionUsage accordionLabel={"Viewpoints"} accordionDetails={<ViewpointsFun/>}/>
-          <AccordionUsage accordionLabel={"Dimensions"} accordionDetails={<SelectSmall/>}/>
+          {/* <AccordionUsage accordionLabel={"Dimensions"} accordionDetails={<SelectSmall/>}/>         */}
           <AccordionUsage accordionLabel={"Light Controls"} accordionDetails={<LightControls/>}/>
+          <AccordionUsage accordionLabel={"Dimensions"} accordionDetails={<DimensionsFun/>}/>
+          <AccordionUsage accordionLabel={"Dynamics"} accordionDetails={<div id='Dynamics'></div>}/>
+          <AccordionUsage accordionLabel={"Material Variants"} accordionDetails={<div id='Material_Variants'></div>}/>
         </div>
         </div>
     </div> 

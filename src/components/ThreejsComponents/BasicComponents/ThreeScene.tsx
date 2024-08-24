@@ -11,18 +11,29 @@ import DragAndDrop from '../DragAndDrop/DragAndDrop';
 let composer:any,container:any
 const ThreeScene = () => {
   const mountRef = useRef<HTMLDivElement | null>(null);      
-  let { scene,setCamera,setControls,setRenderer,background1,hdri1,setContainer}=useContext(BasicContext)
+  let { scene,setCamera,setControls,setRenderer,background1,hdri1,setContainer,setgltfData}=useContext(BasicContext)
   
   scene.background=background1
   scene.environment=hdri1
   let url='https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Room/Roop_physics_2.glb'
   let url1='https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Blinds/blind_03/Blinds_03_v01_draco.glb'
-  GLTFLoaderFun(scene,url)   
-  GLTFLoaderFun(scene,url1)
+  const fetchData = async () => {    
+    try {
+      let d=await GLTFLoaderFun(scene,url)   
+      // setgltfData(d)
+      console.log(d)
+      let d1=await GLTFLoaderFun(scene,url1)
+      // setgltfData(d1)
+      
+    } catch (error) {
+      console.log(error)
+    } finally {      
+    }
+  };  
   DragAndDrop()
   HdriLoad() 
-  useEffect(() => { 
-       
+  useEffect(() => {     
+    fetchData()
     const camera = createCamera(mountRef.current);
     const renderer = createRenderer(mountRef.current);
     const controls=createCameraControls(camera,renderer)     
