@@ -33,8 +33,7 @@ let background0:any, background1:any, hdri1:any, hdri2:any
         textureLoader.loadAsync('autumn_forest(Day).jpg'),    
         textureLoader.loadAsync('lythwood_room_1k_test.jpg'),
         hdriLoader.loadAsync('cyclorama_hard_light_1k.hdr'),        
-      ]);     
-      console.log(background0)
+      ]);           
       if(background0){        
         background0.encoding = SRGBColorSpace;
         background0.mapping = EquirectangularReflectionMapping;              

@@ -13,6 +13,7 @@ export const BasicProvider = ({ children }) => {
   let [background1, setbackground1] = useState(new THREE.Object3D());
   let [hdri1, sethdri1] = useState(new THREE.Object3D());
   let [hdri2, sethdri2] = useState(new THREE.Object3D());
+  let [gltfData, setgltfData] = useState(new THREE.Object3D());
   let [container, setContainer] = useState('');
   let value = {
     scene,
@@ -33,6 +34,7 @@ export const BasicProvider = ({ children }) => {
     sethdri1,
     hdri2,
     sethdri2,
+    gltfData, setgltfData,
     container,
     setContainer    
   };

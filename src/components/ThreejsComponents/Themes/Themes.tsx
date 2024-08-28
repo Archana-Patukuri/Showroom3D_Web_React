@@ -1,14 +1,22 @@
 
-let RoomLoaded=false
-function addModelFun(gltfData:any,scene:any){    
-  scene.add(gltfData.scene);       
-      //  console.log(gltfData.scene.children[0].name)
-       if(RoomLoaded===true){
+import MaterialVariantsFun from "../ObjectActions/MaterialVariants";
+import { useContext} from 'react';
+import { BasicContext } from '../../../contexts/basic.context';
+async function AddModelFun(gltfData:any,scene:any){    
+  scene.add(gltfData.scene);                
+/*   let {setgltfData}=useContext(BasicContext)   
+  setgltfData(gltfData)   */
+       if(gltfData.scene.children[0].name==="Blind_102"){        
+        MaterialVariantsFun(gltfData)                
         return
-       }
+       }      
+       if(gltfData.scene.children[0].name!=="Blind_102" && gltfData.scene.children[0].name!=="Room_103"){        
+        MaterialVariantsFun(gltfData)        
+        return
+       }    
        const themesDesktop:any = document.getElementById('Themes_Desktop');  
        if(gltfData.scene.children[0].name==="Room_103"){
-        RoomLoaded=true
+        
         for (let i = 0; i < gltfData.userData.variants.length; i += 1) {
           const div2 = document.createElement('div');
           div2.className = 'd-flex flex-row';
@@ -50,4 +58,4 @@ function addModelFun(gltfData:any,scene:any){
     return    
 };
 
-export default addModelFun;
+export default AddModelFun;
