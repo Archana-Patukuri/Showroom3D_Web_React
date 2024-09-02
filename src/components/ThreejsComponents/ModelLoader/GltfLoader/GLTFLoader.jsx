@@ -2,6 +2,7 @@ import { GLTFLoader } from 'three-stdlib';
 import { DRACOLoader } from 'three-stdlib';
 import AddModelFun from '../../Themes/Themes';
 import GLTFMaterialsVariantsExtension from 'three-gltf-extensions/loaders/KHR_materials_variants/KHR_materials_variants'
+import ThemesFun from '../../Themes/Themes1';
 
 async function GLTFLoaderFun(scene,url){  
  
@@ -14,6 +15,7 @@ async function GLTFLoaderFun(scene,url){
           url,
           (gltf) => {                               
             AddModelFun(gltf,scene)
+            // <ThemesFun gltfData={gltf} scene={scene}/>
                if(gltf.scene.children[0].name==="Chair_101"){
               gltf.scene.position.x-=0.5                  
             }  
@@ -23,11 +25,11 @@ async function GLTFLoaderFun(scene,url){
             if(gltf.scene.children[0].name==="Blind_102"){
               gltf.scene.position.set(-1.99528,1.71393,-0.037798)                                   
             } 
-            if(gltf.scene.children[0].name==="Room_103"){
+           /*  if(gltf.scene.children[0].name==="Room_103"){
               let sun=scene.getObjectByName('Sun')
               sun.intensity=2  
               sun.castShadow=true      
-            }  
+            }   */
             scene.traverse((item) => {
               // if(item.isMesh){
                 item.castShadow=true

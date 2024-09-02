@@ -1,7 +1,7 @@
 
 import { useContext} from 'react';
 import { BasicContext } from '../../../contexts/basic.context';
-const DimensionsFun = () => {  
+const DimensionsFunUI = () => {  
     let {gltfData}=useContext(BasicContext)     
     return  gltfData.userData.gltfExtensions && <>    
     <div style={{display:'flex',flexDirection:'column',marginTop:'2px'}}>   
@@ -21,4 +21,4 @@ const DimensionsFun = () => {
      </> 
   
   }
-  export default DimensionsFun;
+  export default DimensionsFunUI;
