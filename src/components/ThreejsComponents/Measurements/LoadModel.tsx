@@ -111,7 +111,7 @@ function LoadModel() {
           <Switch
             checked={checked}
             id="measurements"
-            onChange={handleCheckboxChange}
+            onChange={(event)=>{handleCheckboxChange(event)}}
             color="primary" // You can change the color to "secondary" or "default"
             size="medium"
           />
