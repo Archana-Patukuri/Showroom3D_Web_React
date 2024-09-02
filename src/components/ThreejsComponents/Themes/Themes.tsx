@@ -1,19 +1,23 @@
 
 import MaterialVariantsFun from "../ObjectActions/MaterialVariants";
-import { useContext} from 'react';
-import { BasicContext } from '../../../contexts/basic.context';
-async function AddModelFun(gltfData:any,scene:any){    
-  scene.add(gltfData.scene);                
-/*   let {setgltfData}=useContext(BasicContext)   
-  setgltfData(gltfData)   */
+import DimensionsFun from "../ObjectActions/Dimensions1";
+
+let room=false;
+async function AddModelFun(gltfData:any,scene:any){     
+        scene.add(gltfData.scene);                
        if(gltfData.scene.children[0].name==="Blind_102"){        
-        MaterialVariantsFun(gltfData)                
+        MaterialVariantsFun(gltfData) 
+        DimensionsFun(gltfData)               
         return
        }      
        if(gltfData.scene.children[0].name!=="Blind_102" && gltfData.scene.children[0].name!=="Room_103"){        
-        MaterialVariantsFun(gltfData)        
+        MaterialVariantsFun(gltfData)    
+        DimensionsFun(gltfData)     
         return
-       }    
+       }   
+       if(room) {
+        return
+       }
        const themesDesktop:any = document.getElementById('Themes_Desktop');  
        if(gltfData.scene.children[0].name==="Room_103"){
         
@@ -21,7 +25,7 @@ async function AddModelFun(gltfData:any,scene:any){
           const div2 = document.createElement('div');
           div2.className = 'd-flex flex-row';
           div2.style.marginTop = '2px';
-    
+          room=true
           const input = document.createElement('input');
           input.type = 'radio';
           input.className = 'largerCheckbox';

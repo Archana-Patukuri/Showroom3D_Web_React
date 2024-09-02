@@ -34,8 +34,8 @@ function App() {
           <AccordionUsage accordionLabel={"Viewpoints"} accordionDetails={<ViewpointsFun/>}/>
           {/* <AccordionUsage accordionLabel={"Dimensions"} accordionDetails={<SelectSmall/>}/>         */}
           <AccordionUsage accordionLabel={"Light Controls"} accordionDetails={<LightControls/>}/>
-          <AccordionUsage accordionLabel={"Dimensions"} accordionDetails={<DimensionsFun/>}/>
-          <AccordionUsage accordionLabel={"Dynamics"} accordionDetails={<div id='Dynamics'></div>}/>
+          <AccordionUsage accordionLabel={"Dimensions"} accordionDetails={<div id='Dimensions'></div>}/>
+          {/* <AccordionUsage accordionLabel={"Dynamics"} accordionDetails={<div id='Dynamics'></div>}/> */}
           <AccordionUsage accordionLabel={"Material Variants"} accordionDetails={<div id='Material_Variants'></div>}/>
         </div>
         </div>
