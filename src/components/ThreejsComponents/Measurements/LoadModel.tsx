@@ -13,6 +13,35 @@ function LoadModel() {
   let { controls, renderer, container, camera, scene } =
     useContext(BasicContext);
 
+  const handleCheckboxChange = (event: any) => {
+    setChecked(event.target.checked);
+  };
+
+  useEffect(() => {
+    if (checked) {
+      controls.enabled = false;
+      console.log("Camera enable:", camera);
+
+      camera.layers.enable(1);
+      onClickMovement();
+    } else {
+      controls.enabled = true;
+      console.log("Camera disable:", camera);
+      console.log("Checked value:", checked);
+      //
+      camera.layers.disable(1);
+      onClickMovement();
+    }
+  }, [checked]);
+
+  const onClickMovement = () => {
+    if (checked) {
+      renderer.domElement.addEventListener("click", measurements);
+    } else {
+      renderer.domElement.removeEventListener("click", measurements);
+    }
+  };
+
   const measurements = (event: any) => {
     console.log("entered to measurements and the checked value is: ", checked);
     if (checked) {
@@ -58,25 +87,6 @@ function LoadModel() {
       }
     }
   };
-
-  const handleCheckboxChange = (event: any) => {
-    setChecked(event.target.checked);
-  };
-
-  useEffect(() => {
-    if (checked) {
-      controls.enabled = false;
-      console.log("Camera enable:", camera);
-      renderer.domElement.addEventListener("click", measurements);
-      camera.layers.enable(1);
-    } else {
-      controls.enabled = true;
-      console.log("Camera disable:", camera);
-      console.log("Checked value:", checked);
-      // renderer.domElement.removeEventListener("click", measurements);
-      camera.layers.disable(1);
-    }
-  });
 
   return (
     <div style={{ width: "275.92px" }}>
