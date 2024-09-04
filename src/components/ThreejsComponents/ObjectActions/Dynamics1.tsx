@@ -1,11 +1,8 @@
 
 import { useContext} from 'react';
 import { BasicContext } from '../../../contexts/basic.context';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-
-const DimensionsFunUI = () => {  
-    let {gltfData}=useContext(BasicContext)  
+const DynamicsFunUI = () => {  
+    let {gltfData}=useContext(BasicContext)     
     return  gltfData.userData.gltfExtensions && <>    
     <div style={{display:'flex',flexDirection:'column',marginTop:'2px'}}>   
     <div style={{display:'flex',justifyContent:'space-between'}}>
@@ -24,13 +21,4 @@ const DimensionsFunUI = () => {
      </> 
   
   }
-  
-    function attachComponent() {
-        const domElement = document.getElementById('Dimensions');
-        
-        if (domElement) {
-          const root = ReactDOM.createRoot(domElement);
-          root.render(<DimensionsFunUI/>);
-        }
-      }   
-  export default DimensionsFunUI;
+  export default DynamicsFunUI;

@@ -10,7 +10,7 @@ import {
 import HdriLoad from "../ModelLoader/HdriLoader/HdriLoader";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import PostProcessing from "../PostProcessing/post-processing";
-// import DragAndDrop from "../DragAndDrop/DragAndDrop";
+import DragAndDrop from "../DragAndDrop/DragAndDrop";
 
 let composer: any, container: any;
 const ThreeScene = () => {
@@ -44,7 +44,7 @@ const ThreeScene = () => {
     } finally {
     }
   };
-  // DragAndDrop();
+  DragAndDrop();
   HdriLoad();
   useEffect(() => {
     fetchData();
@@ -92,7 +92,7 @@ const ThreeScene = () => {
     };
   }, [scene, setCamera, setControls, setRenderer, setContainer]);
 
-  return <div ref={mountRef} style={{ width: "60vw", height: "100vh" }} />;
+  return <div ref={mountRef} style={{ width: "60vw", height: "100vh" }} id="scene-container"/>;
 };
 
 export default ThreeScene;

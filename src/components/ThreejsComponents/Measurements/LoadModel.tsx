@@ -21,7 +21,7 @@ function LoadModel() {
     if (checked) {
       controls.enabled = false;
       console.log("Camera enable:", camera);
-
+      console.log("Checked value:", checked);
       camera.layers.enable(1);
       onClickMovement();
     } else {

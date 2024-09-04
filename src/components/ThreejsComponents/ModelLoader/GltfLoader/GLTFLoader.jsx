@@ -3,6 +3,7 @@ import { DRACOLoader } from 'three-stdlib';
 import AddModelFun from '../../Themes/Themes';
 import GLTFMaterialsVariantsExtension from 'three-gltf-extensions/loaders/KHR_materials_variants/KHR_materials_variants'
 import ThemesFun from '../../Themes/Themes1';
+import DimensionsFunUI from '../../ObjectActions/Dimensions';
 
 async function GLTFLoaderFun(scene,url){  
  
@@ -14,7 +15,7 @@ async function GLTFLoaderFun(scene,url){
         loader.load(
           url,
           (gltf) => {                               
-            AddModelFun(gltf,scene)
+            AddModelFun(gltf,scene)            
             // <ThemesFun gltfData={gltf} scene={scene}/>
                if(gltf.scene.children[0].name==="Chair_101"){
               gltf.scene.position.x-=0.5                  

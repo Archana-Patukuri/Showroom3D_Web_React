@@ -9,6 +9,7 @@ import Reset from './components/ThreejsComponents/Reset';
 import ViewpointsFun from './components/ThreejsComponents/Viewpoints/Viewpoints';
 import VariantsFun from './components/ThreejsComponents/ObjectActions/MaterialVariants';
 import DimensionsFun from './components/ThreejsComponents/ObjectActions/Dimensions';
+import DimensionsFunUI from './components/ThreejsComponents/ObjectActions/Dimensions';
 function App() {
   let label="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget."  
   return (            
