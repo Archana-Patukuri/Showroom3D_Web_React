@@ -31,27 +31,29 @@ async function GLTFLoaderFun(scene,url){
               sun.intensity=2  
               sun.castShadow=true      
             }   */
-            scene.traverse((item) => {
-              // if(item.isMesh){
-                item.castShadow=true
-                item.recieveShadow=true                
-              // }
-            });
-                      
-               /* if(gltf.scene.children[0].children[5].type==="PointLight"){
+      scene.traverse((item) => {
+        // if(item.isMesh){
+        item.castShadow = true;
+        item.recieveShadow = true;
+        // }
+      });
+
+     /*  const light = new THREE.DirectionalLight(0x404040);
+      scene.add(light); */
+
+      /* if(gltf.scene.children[0].children[5].type==="PointLight"){
                 gltf.scene.position.x+=1.5                                                            
-              }   */              
-            // console.log(gltf)   
-            return gltf
-            
-          },
-          undefined,
-          (error) => {
-            console.error('An error happened', error);
-          }
-        );   
-       
-        // return  <></>                        
-};
+              }   */
+      // console.log(gltf)
+      return gltf;
+    },
+    undefined,
+    (error) => {
+      console.error("An error happened", error);
+    }
+  );
+
+  // return  <></>
+}
 
 export default GLTFLoaderFun;

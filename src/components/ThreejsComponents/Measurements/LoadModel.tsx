@@ -6,45 +6,43 @@ import Stack from "@mui/material/Stack";
 import { Vector3 } from "three";
 import * as THREE from "three";
 
+const buttonItems = [
+  {
+    id: 1,
+    name: "black",
+  },
+  {
+    id: 2,
+    name: "red",
+  },
+  {
+    id: 3,
+    name: "#00ff00",
+  },
+  {
+    id: 4,
+    name: "#0000ff",
+  },
+  {
+    id: 5,
+    name: "#ffffff",
+  },
+];
 function LoadModel() {
-  const [checked, setChecked] = useState(false);
+  const [measurementChecked, setMeasurementChecked] = useState(false);
   const [item, setItem] = useState<Vector3[]>([]);
+  const [color, setColor] = useState("black");
+  const [unit, setUnit] = useState("m");
 
-  let { controls, renderer, container, camera, scene } =
+  let { controls, renderer, camera, scene, container } =
     useContext(BasicContext);
 
-  const handleCheckboxChange = (event: any) => {
-    setChecked(event.target.checked);
-  };
-
-  useEffect(() => {
-    if (checked) {
-      controls.enabled = false;
-      console.log("Camera enable:", camera);
-      console.log("Checked value:", checked);
-      camera.layers.enable(1);
-      onClickMovement();
-    } else {
-      controls.enabled = true;
-      console.log("Camera disable:", camera);
-      console.log("Checked value:", checked);
-      //
-      camera.layers.disable(1);
-      onClickMovement();
-    }
-  }, [checked]);
-
-  const onClickMovement = () => {
-    if (checked) {
-      renderer.domElement.addEventListener("click", measurements);
-    } else {
-      renderer.domElement.removeEventListener("click", measurements);
-    }
-  };
-
   const measurements = (event: any) => {
-    console.log("entered to measurements and the checked value is: ", checked);
-    if (checked) {
+    if (measurementChecked) {
+      console.log(
+        "entered to measurements and the checked value is: ",
+        measurementChecked
+      );
       event.preventDefault();
       const mouse = new THREE.Vector2();
       mouse.x = (event.clientX / container.clientWidth) * 2 - 1;
@@ -55,9 +53,9 @@ function LoadModel() {
       let intersects = raycaster.intersectObjects(scene.children);
       if (intersects.length > 0) {
         let point = intersects[0].point;
-        const sphereGeometry = new THREE.SphereGeometry(0.05, 16, 16);
+        const sphereGeometry = new THREE.SphereGeometry(0.03, 12, 12);
         const sphereMaterial = new THREE.MeshStandardMaterial({
-          color: "black",
+          color: `${color}`,
           emissive: 0x000000,
         });
         const sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
@@ -65,19 +63,38 @@ function LoadModel() {
         scene.add(sphereMesh);
 
         item.push(point);
+        console.log("Item points:", item);
         if (item.length === 2) {
           const distance = item[0].distanceTo(item[1]);
 
           const labelDiv = document.createElement("div");
           labelDiv.className = "label";
+          labelDiv.style.transform = "rotate(90deg)";
           labelDiv.style.backgroundColor = "transparent";
 
           const lineLabel = new CSS2DObject(labelDiv);
-          lineLabel.rotateX(Math.PI / 2);
+          lineLabel.rotateY(Math.PI / 2);
           lineLabel.position.lerpVectors(item[0], item[1], 0.5);
-          lineLabel.element.innerText = `${distance.toFixed(2)}m`;
+          switch (unit) {
+            case "cm":
+              lineLabel.element.innerText = (distance * 100).toFixed(2);
+              lineLabel.element.innerText += " cm";
+              break;
+            case "inch":
+              lineLabel.element.innerText = (distance * 39.3700787).toFixed(2);
+              lineLabel.element.innerText += " inch";
+              break;
+            case "feet":
+              lineLabel.element.innerText = (distance * 3.2808399).toFixed(2);
+              lineLabel.element.innerText += " ft";
+              break;
+            default:
+              lineLabel.element.innerText = distance.toFixed(2);
+              lineLabel.element.innerText += " m";
+              break;
+          }
           lineLabel.userData.defaultValue = lineLabel.element.innerText;
-          const material = new THREE.LineBasicMaterial({ color: 0xff0000 });
+          const material = new THREE.LineBasicMaterial({ color: `${color}` });
           const geometry = new THREE.BufferGeometry().setFromPoints(item);
           let line = new THREE.Line(geometry, material);
           line.add(lineLabel);
@@ -87,6 +104,16 @@ function LoadModel() {
       }
     }
   };
+
+  useEffect(() => {
+    if (measurementChecked) {
+      controls.enabled = false;
+      renderer.domElement.addEventListener("click", measurements);
+    } else {
+      controls.enabled = true;
+      renderer.domElement.removeEventListener("click", measurements);
+    }
+  }, [measurementChecked]);
 
   return (
     <div style={{ width: "275.92px" }}>
@@ -101,24 +128,18 @@ function LoadModel() {
           }}
         >
           <label>Measurements</label>
-          {/* <input
-            type="checkbox"
-            id="measurements"
-            onChange={handleCheckboxChange}
-            checked={checked}
-          /> */}
 
           <Switch
-            checked={checked}
+            checked={measurementChecked}
             id="measurements"
-            onChange={(event)=>{handleCheckboxChange(event)}}
-            color="primary" // You can change the color to "secondary" or "default"
+            onChange={(event) => {
+              setMeasurementChecked(event.target.checked);
+            }}
+            color="primary"
             size="medium"
           />
         </div>
-        {/* <p>isChecked: {checked ? "checked" : "unchecked"}.</p>
-        <p>Checked value: {checked}</p> */}
-        {/* <div
+        <div
           style={{
             display: "flex",
             flexDirection: "row",
@@ -127,11 +148,15 @@ function LoadModel() {
           }}
         >
           <label style={{ marginRight: "10px" }}>Unit Type</label>
-          <select>
-            <option>meter</option>
-            <option>inch</option>
-            <option>cm</option>
-            <option>feet</option>
+          <select
+            onChange={(event) => {
+              setUnit(event.target.value);
+            }}
+          >
+            <option value={"m"}>meter</option>
+            <option value={"inch"}>inch</option>
+            <option value={"cm"}>cm</option>
+            <option value={"feet"}>feet</option>
           </select>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -145,24 +170,22 @@ function LoadModel() {
               gap: "8px",
             }}
           >
-            <button
-              style={{
-                borderRadius: "25px",
-                border: "none",
-                backgroundColor: "black",
-                width: "38px",
-                height: "38px",
-              }}
-            ></button>
-            <button
-              style={{
-                borderRadius: "25px",
-                border: "none",
-                backgroundColor: "red",
-                width: "38px",
-                height: "38px",
-              }}
-            ></button>
+            {buttonItems.map((eachButton) => (
+              <button
+                style={{
+                  borderRadius: "25px",
+                  border: "none",
+                  backgroundColor: `${eachButton.name}`,
+                  width: "38px",
+                  height: "38px",
+                }}
+                key={eachButton.id}
+                value={eachButton.name}
+                onClick={() => setColor(eachButton.name)}
+              />
+            ))}
+
+            {/*
             <button
               style={{
                 borderRadius: "25px",
@@ -189,9 +212,9 @@ function LoadModel() {
                 height: "38px",
                 border: "1px solid grey",
               }}
-            ></button>
+            ></button> */}
           </div>
-        </div> */}
+        </div>
       </Stack>
     </div>
   );

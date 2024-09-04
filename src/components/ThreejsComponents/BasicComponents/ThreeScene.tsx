@@ -8,11 +8,12 @@ import {
   createRenderer,
 } from "./BasicComponents";
 import HdriLoad from "../ModelLoader/HdriLoader/HdriLoader";
+import { CSS2DRenderer } from "three/examples/jsm/renderers/CSS2DRenderer";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import PostProcessing from "../PostProcessing/post-processing";
 import DragAndDrop from "../DragAndDrop/DragAndDrop";
 
-let composer: any, container: any;
+let composer: any, container: any, labelRenderer: any;
 const ThreeScene = () => {
   const mountRef = useRef<HTMLDivElement | null>(null);
   let {
@@ -23,7 +24,7 @@ const ThreeScene = () => {
     background1,
     hdri1,
     setContainer,
-    setgltfData,
+    setLabelRenderer,
   } = useContext(BasicContext);
 
   scene.background = background1;
@@ -32,6 +33,7 @@ const ThreeScene = () => {
     "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Room/Roop_physics_2.glb";
   let url1 =
     "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Blinds/blind_03/Blinds_03_v01_draco.glb";
+
   const fetchData = async () => {
     try {
       let d = await GLTFLoaderFun(scene, url);
@@ -60,37 +62,51 @@ const ThreeScene = () => {
     camera.position.z = 4;
     camera.position.y = 1.5;
 
-    const renderScene = () => {
-      requestAnimationFrame(renderScene);
-      TWEEN.update();
-      // renderer.render(scene, camera);
-      composer.render();
-      composer.renderer.renderLists.dispose();
-    };
-
-    renderScene();
-
     const handleResize = () => {
-      camera.aspect = window.innerWidth / 2 / window.innerHeight;
+      camera.aspect = container.clientWidth / container.clientHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(
-        window.innerWidth / 2 + window.innerWidth / 10,
-        window.innerHeight
-      );
-      composer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      composer.setSize(container.clientWidth, container.clientHeight);
+      labelRenderer.setSize(container.clientWidth, container.clientHeight);
       // composer.setPixelRatio(window.devicePixelRatio * val);
     };
 
     window.addEventListener("resize", handleResize);
     container = mountRef.current;
     setContainer(container);
+    labelRenderer = new CSS2DRenderer();
+    labelRenderer.setSize(container.clientWidth, container.clientHeight);
+    labelRenderer.domElement.style.position = "absolute";
+    labelRenderer.domElement.style.top = "0px";
+    labelRenderer.domElement.style.pointerEvents = "none";
+    console.log("LabelRenderer data:", labelRenderer);
+    mountRef.current?.appendChild(labelRenderer.domElement);
+
+    const renderScene = () => {
+      requestAnimationFrame(renderScene);
+      TWEEN.update();
+      // renderer.render(scene, camera);
+      labelRenderer.render(scene, camera);
+      composer.render();
+      composer.renderer.renderLists.dispose();
+    };
+
+    renderScene();
+
     return () => {
       window.removeEventListener("resize", handleResize);
       if (container) {
         container.removeChild(renderer.domElement);
       }
     };
-  }, [scene, setCamera, setControls, setRenderer, setContainer]);
+  }, [
+    scene,
+    setCamera,
+    setControls,
+    setRenderer,
+    setContainer,
+    setLabelRenderer,
+  ]);
 
   return <div ref={mountRef} style={{ width: "60vw", height: "100vh" }} id="scene-container"/>;
 };
