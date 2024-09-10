@@ -54,7 +54,7 @@ const DragAndDrop= () => {
       }  */
       // console.log(scene)
       const arr = intersect(scene);
-      // console.log(arr)
+      console.log(arr)
       const floor = arr.find((item) => item.object.name === 'Floor');
       /* console.log(floor)
       console.log(e.target.id) */
