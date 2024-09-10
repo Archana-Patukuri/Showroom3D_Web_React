@@ -116,7 +116,7 @@ function LoadModel() {
   }, [measurementChecked]);
 
   return (
-    <div style={{ width: "275.92px" }}>
+    <div style={{ width: "17vw" }}>
       <Stack spacing={1} direction="column">
         <h1>Measurements </h1>
         <div

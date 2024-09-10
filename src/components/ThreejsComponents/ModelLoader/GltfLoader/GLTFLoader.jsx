@@ -37,18 +37,32 @@ async function GLTFLoaderFun(scene, url) {
         // }
       });
 
-      const light = new THREE.DirectionalLight(0x404040);
-      scene.add(light);
+      // const light = new THREE.DirectionalLight(0x404040);
+      // scene.add(light);
 
       /* if(gltf.scene.children[0].children[5].type==="PointLight"){
                 gltf.scene.position.x+=1.5                                                            
               }   */
       // console.log(gltf)
+      const grid = new THREE.GridHelper(10, 20, 0xffffff, 0xffffff);
+      grid.material.opacity = 0.5;
+      grid.position.y = -0.02;
+      grid.material.transparent = true;
+      scene.add(grid);
+
       return gltf;
     },
     undefined,
     (error) => {
       console.error("An error happened", error);
+    }
+  );
+
+  loader.load(
+    "https://d3t7cnf9sa42u5.cloudfront.net/threejs_test_cases/Table.glb",
+    function (gltf) {
+      let model = gltf.scene;
+      scene.add(model);
     }
   );
 

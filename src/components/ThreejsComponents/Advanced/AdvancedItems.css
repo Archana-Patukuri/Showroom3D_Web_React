@@ -1,0 +1,29 @@
+.advanceItemsHeading {
+  color: #ff5a50;
+  background: white;
+  width: 200px;
+  padding: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 0px;
+}
+.advancedItemsDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.advancedItemsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 10px;
+  padding: 10px;
+}
+
+.advancedItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

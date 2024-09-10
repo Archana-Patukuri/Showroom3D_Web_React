@@ -10,6 +10,7 @@ import { styled } from "@mui/system";
 import HorizontalTabs from "./horizontalTab.component";
 import "./verticalTab.styles.css";
 import UnstyledTabsCustomized from "./horizontalTabs";
+import AdvancedItems from "../../ThreejsComponents/Advanced/AdvancedItems";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -22,13 +23,15 @@ function TabPanel(props: TabPanelProps) {
   return (
     <div
       role="tabpanel"
+      // style={{ width: "80%" }}
       hidden={value !== index}
       id={`vertical-tabpanel-${index}`}
       aria-labelledby={`vertical-tab-${index}`}
+      style={{ margin: "0px", width: "64%" }}
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 1 }}>
+        <Box sx={{ margin: "0px" }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -86,7 +89,11 @@ const VerticalTabs = () => {
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: "divider", overflow: "auto" }}
+        sx={{
+          borderRight: 1,
+          borderColor: "divider",
+          overflow: "auto",
+        }}
       >
         <CustomTab
           label="Sample Room"
@@ -172,6 +179,9 @@ const VerticalTabs = () => {
       </TabPanel>
       <TabPanel value={value} index={9}>
         <Measurements />
+      </TabPanel>
+      <TabPanel value={value} index={12}>
+        <AdvancedItems />
       </TabPanel>
     </Box>
   );
