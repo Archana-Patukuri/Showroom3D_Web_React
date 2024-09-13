@@ -13,6 +13,10 @@ export const BasicProvider = ({ children }) => {
   let [background1, setbackground1] = useState(new THREE.Object3D());
   let [hdri1, sethdri1] = useState(new THREE.Object3D());
   let [hdri2, sethdri2] = useState(new THREE.Object3D());
+  let [composer, setComposer] = useState("");
+  let [ssaoPass, setSsaoPass] = useState(new THREE.Object3D());
+  let [saoPass, setSaoPass] = useState(new THREE.Object3D());
+  let [renderPass, setRenderPass] = useState("");
   let [gltfData, setgltfData] = useState(new THREE.Object3D());
   let [container, setContainer] = useState("");
   let value = {
@@ -38,6 +42,14 @@ export const BasicProvider = ({ children }) => {
     setgltfData,
     container,
     setContainer,
+    composer,
+    setComposer,
+    renderPass,
+    setRenderPass,
+    ssaoPass,
+    setSsaoPass,
+    saoPass,
+    setSaoPass,
   };
   return (
     <BasicContext.Provider value={value}>{children}</BasicContext.Provider>

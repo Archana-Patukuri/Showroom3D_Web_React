@@ -20,12 +20,12 @@ function App() {
      <ThreeScene/>
      </div>
      <div className="right-half">      
-      <div style={{display:"flex",flexDirection:"column",justifyContent: 'space-between',maxWidth:"40vw"}}>
-      <div style={{display:"flex",flexDirection:"row",maxWidth:"40vw", justifyContent: ""}}>
-      <div style={{maxWidth:"32vw",overflow:"auto",backgroundColor:'#F5F5F5'}}>        
+      <div style={{display:"flex",flexDirection:"column",justifyContent: 'space-between',width:"40vw"}}>
+      <div style={{display:"flex",flexDirection:"row",width:"40vw", justifyContent: ""}}>
+      <div style={{width:"30vw",overflow:"auto",backgroundColor:'#F5F5F5'}}>
         <VerticalTabs />
       </div>
-        <div style={{maxWidth:"10vw",overflow:"auto",backgroundColor:'#F5F5F5'}}>
+        <div style={{width:"10vw",overflow:"auto",backgroundColor:'#F5F5F5'}}>
           <div style={{display:'flex',justifyContent:'space-between',padding:'5px',borderBottom:'1px solid #E5E5E5'}}>
           <Reset/>
           </div>

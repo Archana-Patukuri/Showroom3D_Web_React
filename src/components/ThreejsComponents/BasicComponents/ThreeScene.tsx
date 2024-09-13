@@ -10,10 +10,12 @@ import {
 import HdriLoad from "../ModelLoader/HdriLoader/HdriLoader";
 import { CSS2DRenderer } from "three/examples/jsm/renderers/CSS2DRenderer";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
-import PostProcessing from "../PostProcessing/post-processing";
-import DragAndDrop from "../DragAndDrop/DragAndDrop";
+// import PostProcessing from "../PostProcessing/post-processing";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
+import * as THREE from "three";
+// import DragAndDrop from "../DragAndDrop/DragAndDrop";
 
-let composer: any, container: any, labelRenderer: any;
+let container: any, labelRenderer: any;
 const ThreeScene = () => {
   const mountRef = useRef<HTMLDivElement | null>(null);
   let {
@@ -25,6 +27,10 @@ const ThreeScene = () => {
     hdri1,
     setContainer,
     setLabelRenderer,
+    composer,
+    setComposer,
+    renderPass,
+    setRenderPass,
   } = useContext(BasicContext);
 
   scene.background = background1;
@@ -46,19 +52,26 @@ const ThreeScene = () => {
     } finally {
     }
   };
-  DragAndDrop();
+  // DragAndDrop();
   HdriLoad();
   useEffect(() => {
     fetchData();
     const camera = createCamera(mountRef.current);
     const renderer = createRenderer(mountRef.current);
+    renderer.autoClear = false;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 0.5;
     const controls = createCameraControls(camera, renderer);
     setCamera(camera);
     setRenderer(renderer);
     setControls(controls);
     composer = new EffectComposer(renderer);
+    setComposer(composer);
 
-    PostProcessing(composer, scene, camera);
+    renderPass = new RenderPass(scene, camera);
+    composer.addPass(renderPass);
+    setRenderPass(renderPass);
+    // PostProcessing(composer, scene, camera);
     camera.position.z = 4;
     camera.position.y = 1.5;
 
@@ -68,7 +81,7 @@ const ThreeScene = () => {
       renderer.setSize(container.clientWidth, container.clientHeight);
       composer.setSize(container.clientWidth, container.clientHeight);
       labelRenderer.setSize(container.clientWidth, container.clientHeight);
-      // composer.setPixelRatio(window.devicePixelRatio * val);
+      // composer.setPixelRatio(window.devicePixelRatio);
     };
 
     window.addEventListener("resize", handleResize);
@@ -108,7 +121,11 @@ const ThreeScene = () => {
     setLabelRenderer,
   ]);
 
-  return <div ref={mountRef} style={{ width: "60vw", height: "100vh" }} id="scene-container"/>;
+  return (
+    <>
+      <div ref={mountRef} style={{ width: "60vw", height: "100vh" }} />
+    </>
+  );
 };
 
 export default ThreeScene;

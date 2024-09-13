@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { styled } from '@mui/system';
-import { Tabs } from '@mui/base/Tabs';
-import { TabsList as BaseTabsList } from '@mui/base/TabsList';
-import { TabPanel as BaseTabPanel } from '@mui/base/TabPanel';
-import { buttonClasses } from '@mui/base/Button';
-import { Tab as BaseTab, tabClasses } from '@mui/base/Tab';
+import * as React from "react";
+import { styled } from "@mui/system";
+import { Tabs } from "@mui/base/Tabs";
+import { TabsList as BaseTabsList } from "@mui/base/TabsList";
+import { TabPanel as BaseTabPanel } from "@mui/base/TabPanel";
+import { buttonClasses } from "@mui/base/Button";
+import { Tab as BaseTab, tabClasses } from "@mui/base/Tab";
 
 export default function VerticalTabsCustomized() {
   return (
@@ -21,8 +21,8 @@ export default function VerticalTabsCustomized() {
   );
 }
 
-const Tab = styled(BaseTab)`  
-  color: #27282D;
+const Tab = styled(BaseTab)`
+  color: #27282d;
   cursor: pointer;
   font-size: 0.875rem;
   font-weight: 600;
@@ -38,16 +38,16 @@ const Tab = styled(BaseTab)`
 
   &:hover {
     background-color: #fff;
-    color:#FF5A50
+    color: #ff5a50;
   }
 
   &:focus {
-    color: #fff;        
+    color: #fff;
   }
 
   &.${tabClasses.selected} {
     background-color: #fff;
-    color: #FF5A50;
+    color: #ff5a50;
   }
 
   &.${buttonClasses.disabled} {
@@ -58,7 +58,7 @@ const Tab = styled(BaseTab)`
 
 const TabPanel = styled(BaseTabPanel)`
   width: 100%;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 0.875rem;
 `;
 
@@ -72,5 +72,5 @@ const TabsList = styled(BaseTabsList)(
   justify-content: start;
   align-content: space-between;
   border-bottom:2px solid #E5E5E5;
-  `,
+  `
 );
