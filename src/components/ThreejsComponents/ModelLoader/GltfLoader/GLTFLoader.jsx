@@ -63,6 +63,7 @@ async function GLTFLoaderFun(scene, url) {
     "https://d3t7cnf9sa42u5.cloudfront.net/threejs_test_cases/Table.glb",
     function (gltf) {
       let model = gltf.scene;
+      model.userData.isContainer = true;
       scene.add(model);
     }
   );

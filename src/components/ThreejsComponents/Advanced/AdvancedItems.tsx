@@ -6,10 +6,17 @@ import { TAARenderPass } from "three/examples/jsm/postprocessing/TAARenderPass.j
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 import { FXAAShader } from "three/examples/jsm/shaders/FXAAShader.js";
-import { SSAOPass } from "three/examples/jsm/postprocessing/SSAOPass.js";
+import { GUI } from "three/examples/jsm/libs/lil-gui.module.min.js";
 import SAOPASS from "./SAOPASS";
-import "./AdvancedItems.css";
 import AmbientOcclusion from "./AmbientOcclusion";
+import FloorReflections from "./FloorReflections";
+import MirrorReflections from "./MirrorReflections";
+import * as THREE from "three";
+import "./AdvancedItems.css";
+
+let params = {
+  exposure: 1.0,
+};
 
 let fxaaPass, ssaaPass, smaaPass, taaPass;
 function AdvancedItems() {
@@ -28,6 +35,15 @@ function AdvancedItems() {
     setSsaoPass,
     saoPass,
     setSaoPass,
+    groundMirror,
+    setGroundMirror,
+    floorMirror,
+    setFloorMirror,
+    ssrPass,
+    setSsrPass,
+    outPass,
+    setOutPass,
+    stats,
   } = useContext(BasicContext);
 
   const onChangeSSAO = (event: any) => {
@@ -45,6 +61,51 @@ function AdvancedItems() {
     }
   };
 
+  const onChangeStats = (event: any) => {
+    if (event.target.checked) {
+      document.body.appendChild(stats.dom);
+    } else {
+      document.body.removeChild(stats.dom);
+    }
+  };
+
+  const onChangeFloorReflection = (event: any) => {
+    let floor = scene.getObjectByName("Floor");
+    if (event.target.checked) {
+      FloorReflections(scene, container, setFloorMirror);
+      floor.material.opacity = 0.7;
+      floor.material.transparent = true;
+    } else {
+      scene.remove(floorMirror);
+      floor.material.opacity = 1;
+      floor.material.transparent = false;
+    }
+  };
+
+  const onChangeMirrorReflection = (event: any) => {
+    let floor = scene.getObjectByName("Floor");
+    if (event.target.checked) {
+      MirrorReflections(
+        scene,
+        container,
+        setGroundMirror,
+        camera,
+        renderer,
+        composer,
+        setSsrPass,
+        setOutPass
+      );
+      floor.material.opacity = 0.7;
+      floor.material.transparent = true;
+    } else {
+      scene.remove(groundMirror);
+      composer.removePass(ssrPass);
+      composer.removePass(outPass);
+      floor.material.opacity = 1;
+      floor.material.transparent = false;
+    }
+  };
+
   const onChangeSAO = (event: any) => {
     if (event.target.checked) {
       SAOPASS(scene, camera, composer, saoPass, setSaoPass);
@@ -52,6 +113,21 @@ function AdvancedItems() {
       composer.removePass(saoPass);
     }
   };
+
+  const onChangeHDRILight = (event: any) => {
+    if (event.target.checked) {
+      const gui = new GUI();
+
+      gui.add(params, "exposure", 0, 4, 0.01).onChange(renderer);
+      gui.open();
+      renderer.toneMapping = THREE.ReinhardToneMapping;
+      renderer.toneMappingExposure = params.exposure;
+    }
+  };
+
+  // const onChangeExposure = (event: any) => {
+  //   renderer.toneMapping = event.target.value;
+  // };
 
   useEffect(() => {
     renderPass.clearAlpha = 0;
@@ -107,8 +183,19 @@ function AdvancedItems() {
       <div className="advancedItemsDiv">
         <div className="advancedItemsContainer">
           <label className="advancedItem">
-            <input type="checkBox" />
-            HDRI Light
+            <input type="checkBox" onChange={onChangeHDRILight} />
+            HDRI Light{" "}
+            {/* <div className="slidecontainer" style={{ marginLeft: "5px" }}>
+              <input
+                type="range"
+                min="0"
+                max="1"
+                value="0.6"
+                step="0.05"
+                className="slider Slider_range slider_class"
+                onChange={onChangeExposure}
+              />
+            </div> */}
           </label>
           <label className="advancedItem">
             <input type="checkBox" />
@@ -127,11 +214,11 @@ function AdvancedItems() {
             Initial Shadows
           </label>
           <label className="advancedItem">
-            <input type="checkBox" />
+            <input type="checkBox" onChange={onChangeMirrorReflection} />
             Mirror Reflections
           </label>
           <label className="advancedItem">
-            <input type="checkBox" />
+            <input type="checkBox" onChange={onChangeFloorReflection} />
             Floor Reflections
           </label>
           <label className="advancedItem">
@@ -194,7 +281,7 @@ function AdvancedItems() {
             SMAA
           </label>
           <label className="advancedItem">
-            <input type="checkBox" />
+            <input type="checkBox" onChange={onChangeStats} />
             Stats
           </label>
           <label className="advancedItem">

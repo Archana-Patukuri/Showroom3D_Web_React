@@ -14,9 +14,15 @@ export const BasicProvider = ({ children }) => {
   let [hdri1, sethdri1] = useState(new THREE.Object3D());
   let [hdri2, sethdri2] = useState(new THREE.Object3D());
   let [composer, setComposer] = useState("");
+  let [outlinePass, setOutlinePass] = useState("");
   let [ssaoPass, setSsaoPass] = useState(new THREE.Object3D());
   let [saoPass, setSaoPass] = useState(new THREE.Object3D());
   let [renderPass, setRenderPass] = useState("");
+  let [floorMirror, setFloorMirror] = useState("");
+  let [groundMirror, setGroundMirror] = useState("");
+  let [ssrPass, setSsrPass] = useState("");
+  let [outPass, setOutPass] = useState("");
+  let [stats, setStats] = useState("");
   let [gltfData, setgltfData] = useState(new THREE.Object3D());
   let [container, setContainer] = useState("");
   let value = {
@@ -50,6 +56,18 @@ export const BasicProvider = ({ children }) => {
     setSsaoPass,
     saoPass,
     setSaoPass,
+    groundMirror,
+    setGroundMirror,
+    floorMirror,
+    setFloorMirror,
+    ssrPass,
+    setSsrPass,
+    outPass,
+    setOutPass,
+    stats,
+    setStats,
+    outlinePass,
+    setOutlinePass,
   };
   return (
     <BasicContext.Provider value={value}>{children}</BasicContext.Provider>
