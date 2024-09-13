@@ -8,15 +8,13 @@ import { Tab as BaseTab, tabClasses } from '@mui/base/Tab';
 import ObjectTypes from '../ObjectTypesUI/ObjectTypesUI';
 import assets from '../../../assets.json';
 
-export default function UnstyledTabsCustomized() {
-  console.log(assets.chairModels)
- 
+export default function UnstyledTabsCustomized() {   
   return (
     <Tabs defaultValue={1}>
       <TabsList>
         <Tab value={1}>Chair</Tab>
         <Tab value={2}>Table</Tab>
-        <Tab value={3}>Sofa</Tab>
+        <Tab value={3}>Light</Tab>
       </TabsList>
       <TabPanel value={1}>
       <ObjectTypes modelData={assets.chairModels}/>        
@@ -24,7 +22,7 @@ export default function UnstyledTabsCustomized() {
       <TabPanel value={2}>
       <ObjectTypes modelData={assets.tableModels}/>
       </TabPanel>
-      <TabPanel value={3}>Sofa page</TabPanel>
+      <TabPanel value={3}><ObjectTypes modelData={assets.lights}/></TabPanel>
     </Tabs>
   );
 }

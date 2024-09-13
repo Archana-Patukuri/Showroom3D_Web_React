@@ -150,7 +150,7 @@ const VerticalTabs = () => {
         <UnstyledTabsCustomized />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <HorizontalTabs />
+      <UnstyledTabsCustomized />
       </TabPanel>
       <TabPanel value={value} index={3}>
         <HorizontalTabs />

@@ -56,14 +56,14 @@ const DragAndDrop= () => {
       const arr = intersect(scene);
       console.log(arr)
       const floor = arr.find((item) => item.object.name === 'Floor');
-      /* console.log(floor)
-      console.log(e.target.id) */
+       console.log(floor)
+      console.log(e.target.id) 
      /*  const data = assets[e.target.dataset.category].find(
         (item) => item.URL === e.target.dataset.modelurl
       );*/
      
       const modelScene =await GLTFLoaderFun(scene,e.target.id)
-      // console.log(modelScene)
+      console.log(modelScene)
       // MaterialVariantsFun(modelScene)
       if (floor?.point) {
         modelScene.position.copy(floor.point);        
