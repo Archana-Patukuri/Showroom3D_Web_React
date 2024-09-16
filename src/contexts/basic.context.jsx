@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import * as THREE from "three";
+import { transform } from "typescript";
 
 export const BasicContext = createContext();
 
@@ -14,14 +15,14 @@ export const BasicProvider = ({ children }) => {
   let [hdri1, sethdri1] = useState(new THREE.Object3D());
   let [hdri2, sethdri2] = useState(new THREE.Object3D());
   let [composer, setComposer] = useState("");
-  let [outlinePass, setOutlinePass] = useState("");
   let [ssaoPass, setSsaoPass] = useState(new THREE.Object3D());
   let [saoPass, setSaoPass] = useState(new THREE.Object3D());
   let [renderPass, setRenderPass] = useState("");
   let [floorMirror, setFloorMirror] = useState("");
-  let [groundMirror, setGroundMirror] = useState("");
-  let [ssrPass, setSsrPass] = useState("");
-  let [outPass, setOutPass] = useState("");
+  let [wallMirror, setWallMirror] = useState("");
+  let [boxHelper, setBoxHelper] = useState("");
+  let [transformControls, setTransformControls] = useState("");
+  let [hdriExposure, setHdriExposure] = useState(Number);
   let [stats, setStats] = useState("");
   let [gltfData, setgltfData] = useState(new THREE.Object3D());
   let [container, setContainer] = useState("");
@@ -56,18 +57,18 @@ export const BasicProvider = ({ children }) => {
     setSsaoPass,
     saoPass,
     setSaoPass,
-    groundMirror,
-    setGroundMirror,
+    wallMirror,
+    setWallMirror,
     floorMirror,
     setFloorMirror,
-    ssrPass,
-    setSsrPass,
-    outPass,
-    setOutPass,
     stats,
     setStats,
-    outlinePass,
-    setOutlinePass,
+    hdriExposure,
+    setHdriExposure,
+    boxHelper,
+    setBoxHelper,
+    transformControls,
+    setTransformControls,
   };
   return (
     <BasicContext.Provider value={value}>{children}</BasicContext.Provider>

@@ -1,9 +1,21 @@
 import { BasicContext } from "../../../contexts/basic.context";
-import { useContext } from "react";
-import UpdateCameraControls from "./CameraControlsFun";
+import { useContext, useState } from "react";
+import UpdateArrangements from "./ArrangementsFun";
 import Checkbox from "@mui/material/Checkbox";
 function Arrangements() {
-  let { controls } = useContext(BasicContext);
+  const [selectedObject, setSelectedObject] = useState(null);
+  let {
+    controls,
+    renderer,
+    camera,
+    scene,
+    container,
+    composer,
+    boxHelper,
+    setBoxHelper,
+    transformControls,
+    setTransformControls,
+  } = useContext(BasicContext);
   return (
     <div style={{ margin: "0px", padding: "0px" }}>
       <Checkbox
@@ -89,7 +101,22 @@ function Arrangements() {
       />
       <Checkbox
         onClick={(e) => {
-          UpdateCameraControls(e, controls, "rotate");
+          UpdateArrangements(
+            e,
+            controls,
+            renderer,
+            "rotate",
+            camera,
+            scene,
+            container,
+            composer,
+            selectedObject,
+            setSelectedObject,
+            boxHelper,
+            setBoxHelper,
+            transformControls,
+            setTransformControls
+          );
         }}
         icon={
           <svg

@@ -38,12 +38,12 @@ function LoadModel() {
     useContext(BasicContext);
 
   const measurements = (event: any) => {
+    event.preventDefault();
     if (measurementChecked) {
       console.log(
         "entered to measurements and the checked value is: ",
         measurementChecked
       );
-      event.preventDefault();
       const mouse = new THREE.Vector2();
       mouse.x = (event.clientX / container.clientWidth) * 2 - 1;
       mouse.y = -(event.clientY / container.clientHeight) * 2 + 1;

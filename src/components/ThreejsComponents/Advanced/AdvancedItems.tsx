@@ -6,24 +6,21 @@ import { TAARenderPass } from "three/examples/jsm/postprocessing/TAARenderPass.j
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 import { FXAAShader } from "three/examples/jsm/shaders/FXAAShader.js";
-import { GUI } from "three/examples/jsm/libs/lil-gui.module.min.js";
 import SAOPASS from "./SAOPASS";
-import AmbientOcclusion from "./AmbientOcclusion";
+import Slider from "@mui/material/Slider";
+import Box from "@mui/material/Box";
+import SSAOPASS from "./SSAOPASS";
 import FloorReflections from "./FloorReflections";
 import MirrorReflections from "./MirrorReflections";
-import * as THREE from "three";
 import "./AdvancedItems.css";
-
-let params = {
-  exposure: 1.0,
-};
 
 let fxaaPass, ssaaPass, smaaPass, taaPass;
 function AdvancedItems() {
   const [taa, setTaa] = useState(false);
   const [fxaa, setFxaa] = useState(false);
   const [ssaa, setSsaa] = useState(false);
-  const [smaa, setSmaa] = useState(false);
+  const [smaa, setSmaa] = useState(true);
+  const [hdri, setHdri] = useState(true);
   let {
     renderer,
     camera,
@@ -35,31 +32,13 @@ function AdvancedItems() {
     setSsaoPass,
     saoPass,
     setSaoPass,
-    groundMirror,
-    setGroundMirror,
+    wallMirror,
+    setWallMirror,
     floorMirror,
     setFloorMirror,
-    ssrPass,
-    setSsrPass,
-    outPass,
-    setOutPass,
     stats,
+    setHdriExposure,
   } = useContext(BasicContext);
-
-  const onChangeSSAO = (event: any) => {
-    if (event.target.checked) {
-      AmbientOcclusion(
-        scene,
-        camera,
-        composer,
-        container,
-        ssaoPass,
-        setSsaoPass
-      );
-    } else {
-      composer.removePass(ssaoPass);
-    }
-  };
 
   const onChangeStats = (event: any) => {
     if (event.target.checked) {
@@ -69,65 +48,18 @@ function AdvancedItems() {
     }
   };
 
-  const onChangeFloorReflection = (event: any) => {
-    let floor = scene.getObjectByName("Floor");
-    if (event.target.checked) {
-      FloorReflections(scene, container, setFloorMirror);
-      floor.material.opacity = 0.7;
-      floor.material.transparent = true;
+  const HDRIExposure = (event: any) => {
+    if (hdri) {
+      setHdriExposure(event.target.value);
+      renderer.toneMappingExposure = event.target.value;
     } else {
-      scene.remove(floorMirror);
-      floor.material.opacity = 1;
-      floor.material.transparent = false;
+      renderer.toneMappingExposure = 0.5;
     }
   };
 
-  const onChangeMirrorReflection = (event: any) => {
-    let floor = scene.getObjectByName("Floor");
-    if (event.target.checked) {
-      MirrorReflections(
-        scene,
-        container,
-        setGroundMirror,
-        camera,
-        renderer,
-        composer,
-        setSsrPass,
-        setOutPass
-      );
-      floor.material.opacity = 0.7;
-      floor.material.transparent = true;
-    } else {
-      scene.remove(groundMirror);
-      composer.removePass(ssrPass);
-      composer.removePass(outPass);
-      floor.material.opacity = 1;
-      floor.material.transparent = false;
-    }
+  const onChangeHDRIExposure = (event: any) => {
+    setHdri(event.target.checked);
   };
-
-  const onChangeSAO = (event: any) => {
-    if (event.target.checked) {
-      SAOPASS(scene, camera, composer, saoPass, setSaoPass);
-    } else {
-      composer.removePass(saoPass);
-    }
-  };
-
-  const onChangeHDRILight = (event: any) => {
-    if (event.target.checked) {
-      const gui = new GUI();
-
-      gui.add(params, "exposure", 0, 4, 0.01).onChange(renderer);
-      gui.open();
-      renderer.toneMapping = THREE.ReinhardToneMapping;
-      renderer.toneMappingExposure = params.exposure;
-    }
-  };
-
-  // const onChangeExposure = (event: any) => {
-  //   renderer.toneMapping = event.target.value;
-  // };
 
   useEffect(() => {
     renderPass.clearAlpha = 0;
@@ -140,7 +72,7 @@ function AdvancedItems() {
       window.innerHeight * renderer.getPixelRatio()
     );
     taaPass = new TAARenderPass(scene, camera);
-    taaPass.sampleLevel = 1;
+    taaPass.sampleLevel = 2;
 
     const outputPass = new OutputPass();
     const pixelRatio = renderer.getPixelRatio();
@@ -150,10 +82,7 @@ function AdvancedItems() {
     fxaaPass.material.uniforms["resolution"].value.y =
       1 / (container.offsetHeight * pixelRatio);
 
-    // composer = new EffectComposer(renderer);
-    // setComposer(composer);
     composer.addPass(renderPass);
-    composer.addPass(outputPass);
     if (taa) {
       composer.addPass(taaPass);
     } else {
@@ -174,6 +103,8 @@ function AdvancedItems() {
     } else {
       composer.removePass(fxaaPass);
     }
+
+    composer.addPass(outputPass);
   }, [fxaa, ssaa, smaa, taa]);
 
   return (
@@ -182,21 +113,37 @@ function AdvancedItems() {
       <hr style={{ margin: "0px" }}></hr>
       <div className="advancedItemsDiv">
         <div className="advancedItemsContainer">
-          <label className="advancedItem">
-            <input type="checkBox" onChange={onChangeHDRILight} />
-            HDRI Light{" "}
-            {/* <div className="slidecontainer" style={{ marginLeft: "5px" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <label className="advancedItem">
               <input
-                type="range"
-                min="0"
-                max="1"
-                value="0.6"
-                step="0.05"
-                className="slider Slider_range slider_class"
-                onChange={onChangeExposure}
+                type="checkBox"
+                onChange={onChangeHDRIExposure}
+                checked={hdri}
               />
-            </div> */}
-          </label>
+              HDRI
+            </label>
+            <Box sx={{ width: "5vw ", paddingLeft: "4px" }}>
+              <Slider
+                valueLabelDisplay="auto"
+                // slots={{
+                //   valueLabel: ValueLabelComponent,
+                // }}
+                aria-label="custom thumb label"
+                defaultValue={0.5}
+                onChange={HDRIExposure}
+                step={0.1}
+                min={0}
+                max={1}
+              />
+            </Box>
+          </div>
           <label className="advancedItem">
             <input type="checkBox" />
             Emissive Light
@@ -214,19 +161,59 @@ function AdvancedItems() {
             Initial Shadows
           </label>
           <label className="advancedItem">
-            <input type="checkBox" onChange={onChangeMirrorReflection} />
+            <input
+              type="checkBox"
+              onChange={(event) =>
+                MirrorReflections(
+                  event,
+                  scene,
+                  container,
+                  setWallMirror,
+                  wallMirror
+                )
+              }
+            />
             Mirror Reflections
           </label>
           <label className="advancedItem">
-            <input type="checkBox" onChange={onChangeFloorReflection} />
+            <input
+              type="checkBox"
+              onChange={(event) =>
+                FloorReflections(
+                  event,
+                  scene,
+                  container,
+                  setFloorMirror,
+                  floorMirror
+                )
+              }
+            />
             Floor Reflections
           </label>
           <label className="advancedItem">
-            <input type="checkBox" onChange={onChangeSSAO} />
+            <input
+              type="checkBox"
+              onChange={(e) =>
+                SSAOPASS(
+                  e,
+                  scene,
+                  camera,
+                  composer,
+                  container,
+                  ssaoPass,
+                  setSsaoPass
+                )
+              }
+            />
             SSAO
           </label>
           <label className="advancedItem">
-            <input type="checkBox" onChange={onChangeSAO} />
+            <input
+              type="checkBox"
+              onChange={(event) =>
+                SAOPASS(event, scene, camera, composer, saoPass, setSaoPass)
+              }
+            />
             SAO
           </label>
           <label className="advancedItem">
@@ -276,6 +263,7 @@ function AdvancedItems() {
           <label className="advancedItem">
             <input
               type="checkBox"
+              checked={smaa}
               onChange={(event) => setSmaa(event.target.checked)}
             />
             SMAA
