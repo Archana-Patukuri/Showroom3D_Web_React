@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import * as THREE from "three";
+import { transform } from "typescript";
 
 export const BasicContext = createContext();
 
@@ -17,6 +18,12 @@ export const BasicProvider = ({ children }) => {
   let [ssaoPass, setSsaoPass] = useState(new THREE.Object3D());
   let [saoPass, setSaoPass] = useState(new THREE.Object3D());
   let [renderPass, setRenderPass] = useState("");
+  let [floorMirror, setFloorMirror] = useState("");
+  let [wallMirror, setWallMirror] = useState("");
+  let [boxHelper, setBoxHelper] = useState("");
+  let [transformControls, setTransformControls] = useState("");
+  let [hdriExposure, setHdriExposure] = useState(Number);
+  let [stats, setStats] = useState("");
   let [gltfData, setgltfData] = useState(new THREE.Object3D());
   let [container, setContainer] = useState("");
   let value = {
@@ -50,6 +57,18 @@ export const BasicProvider = ({ children }) => {
     setSsaoPass,
     saoPass,
     setSaoPass,
+    wallMirror,
+    setWallMirror,
+    floorMirror,
+    setFloorMirror,
+    stats,
+    setStats,
+    hdriExposure,
+    setHdriExposure,
+    boxHelper,
+    setBoxHelper,
+    transformControls,
+    setTransformControls,
   };
   return (
     <BasicContext.Provider value={value}>{children}</BasicContext.Provider>

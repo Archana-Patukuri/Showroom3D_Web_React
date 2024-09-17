@@ -2,8 +2,6 @@ import { GLTFLoader } from "three-stdlib";
 import { DRACOLoader } from "three-stdlib";
 import AddModelFun from "../../Themes/Themes";
 import GLTFMaterialsVariantsExtension from "three-gltf-extensions/loaders/KHR_materials_variants/KHR_materials_variants";
-import ThemesFun from "../../Themes/Themes1";
-import DimensionsFunUI from "../../ObjectActions/Dimensions";
 import * as THREE from "three";
 
 async function GLTFLoaderFun(scene, url) {
@@ -63,11 +61,25 @@ async function GLTFLoaderFun(scene, url) {
     "https://d3t7cnf9sa42u5.cloudfront.net/threejs_test_cases/Table.glb",
     function (gltf) {
       let model = gltf.scene;
+      model.userData.isContainer = true;
       scene.add(model);
     }
+  );
+  loader.load(
+    "https://d3t7cnf9sa42u5.cloudfront.net/compressed_models/Accessories/Mirror_Feb_16.glb",
+    function (gltf) {
+      let model = gltf.scene;
+      model.position.set(0, 1.75, -1.9);
+      model.userData.isContainer = true;
+      scene.add(model);
+    }
+<<<<<<< HEAD
   ); */
 
   // return  <></>
+=======
+  );
+>>>>>>> 7f73dcee8650c401597e75d611316ef84d869e42
 }
 /* function gltfLoad(){
   return <>

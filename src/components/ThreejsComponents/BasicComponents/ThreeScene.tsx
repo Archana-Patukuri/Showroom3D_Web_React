@@ -10,10 +10,14 @@ import {
 import HdriLoad from "../ModelLoader/HdriLoader/HdriLoader";
 import { CSS2DRenderer } from "three/examples/jsm/renderers/CSS2DRenderer";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
-// import PostProcessing from "../PostProcessing/post-processing";
+import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import * as THREE from "three";
+<<<<<<< HEAD
 import DragAndDrop from "../DragAndDrop/DragAndDrop";
+=======
+import Stats from "three/examples/jsm/libs/stats.module.js";
+>>>>>>> 7f73dcee8650c401597e75d611316ef84d869e42
 
 let container: any, labelRenderer: any;
 const ThreeScene = () => {
@@ -31,6 +35,7 @@ const ThreeScene = () => {
     setComposer,
     renderPass,
     setRenderPass,
+    setStats,
   } = useContext(BasicContext);
 
   scene.background = background1;
@@ -71,9 +76,13 @@ const ThreeScene = () => {
     renderPass = new RenderPass(scene, camera);
     composer.addPass(renderPass);
     setRenderPass(renderPass);
+
     // PostProcessing(composer, scene, camera);
     camera.position.z = 4;
     camera.position.y = 1.5;
+
+    let stats = new Stats();
+    setStats(stats);
 
     const handleResize = () => {
       camera.aspect = container.clientWidth / container.clientHeight;
@@ -93,14 +102,21 @@ const ThreeScene = () => {
     labelRenderer.domElement.style.top = "0px";
     labelRenderer.domElement.style.pointerEvents = "none";
     console.log("LabelRenderer data:", labelRenderer);
+
+    const outputPass = new OutputPass();
+    composer.addPass(outputPass);
     mountRef.current?.appendChild(labelRenderer.domElement);
 
     const renderScene = () => {
       requestAnimationFrame(renderScene);
       TWEEN.update();
+      // renderer.toneMappingExposure = hdriExposure;
       // renderer.render(scene, camera);
       labelRenderer.render(scene, camera);
+      stats.begin();
       composer.render();
+      stats.end();
+      controls.update();
       composer.renderer.renderLists.dispose();
     };
 
