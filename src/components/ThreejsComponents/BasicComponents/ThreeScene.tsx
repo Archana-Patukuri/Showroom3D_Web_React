@@ -13,11 +13,8 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import * as THREE from "three";
-<<<<<<< HEAD
 import DragAndDrop from "../DragAndDrop/DragAndDrop";
-=======
 import Stats from "three/examples/jsm/libs/stats.module.js";
->>>>>>> 7f73dcee8650c401597e75d611316ef84d869e42
 
 let container: any, labelRenderer: any;
 const ThreeScene = () => {

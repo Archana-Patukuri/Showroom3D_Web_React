@@ -5680,6 +5680,11 @@ human-signals@^2.1.0:
   resolved "https://registry.npmjs.org/human-signals/-/human-signals-2.1.0.tgz"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
+i@^0.3.7:
+  version "0.3.7"
+  resolved "https://registry.npmjs.org/i/-/i-0.3.7.tgz"
+  integrity sha512-FYz4wlXgkQwIPqhzC5TdNMLSE5+GS1IIDJZY/1ZiEPCT2S3COUVZeT5OW4BmW4r5LHLQuOosSwsvnroG9GR59Q==
+
 iconv-lite@^0.6.3:
   version "0.6.3"
   resolved "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz"
@@ -7122,8 +7127,6 @@ multicast-dns@^7.2.5:
     dns-packet "^5.2.2"
     thunky "^1.0.2"
 
-<<<<<<< HEAD
-=======
 "my-3d-app@file:":
   version "0.1.0"
   resolved "file:"
@@ -7150,7 +7153,7 @@ multicast-dns@^7.2.5:
     react "^18.3.1"
     react-dom "^18.3.1"
     react-redux "^9.1.2"
-    react-scripts "^3.0.1"
+    react-scripts "^5.0.1"
     styled-components "^6.1.11"
     three "^0.165.0"
     three-gltf-extensions "^0.0.15"
@@ -7158,7 +7161,6 @@ multicast-dns@^7.2.5:
     typescript "^4.9.5"
     web-vitals "^2.1.4"
 
->>>>>>> 7f73dcee8650c401597e75d611316ef84d869e42
 mz@^2.7.0:
   version "2.7.0"
   resolved "https://registry.npmjs.org/mz/-/mz-2.7.0.tgz"
@@ -8402,7 +8404,7 @@ react-router@6.26.2:
   dependencies:
     "@remix-run/router" "1.19.2"
 
-react-scripts@5.0.1:
+react-scripts@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npmjs.org/react-scripts/-/react-scripts-5.0.1.tgz"
   integrity sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ==

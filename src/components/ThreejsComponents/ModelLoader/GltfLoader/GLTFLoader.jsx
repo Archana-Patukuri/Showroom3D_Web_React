@@ -73,13 +73,9 @@ async function GLTFLoaderFun(scene, url) {
       model.userData.isContainer = true;
       scene.add(model);
     }
-<<<<<<< HEAD
   ); */
 
   // return  <></>
-=======
-  );
->>>>>>> 7f73dcee8650c401597e75d611316ef84d869e42
 }
 /* function gltfLoad(){
   return <>
