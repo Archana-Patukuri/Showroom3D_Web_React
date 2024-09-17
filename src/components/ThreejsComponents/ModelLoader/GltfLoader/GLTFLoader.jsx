@@ -59,15 +59,19 @@ async function GLTFLoaderFun(scene, url) {
     }
   );
 
-  loader.load(
+ /*  loader.load(
     "https://d3t7cnf9sa42u5.cloudfront.net/threejs_test_cases/Table.glb",
     function (gltf) {
       let model = gltf.scene;
       scene.add(model);
     }
-  );
+  ); */
 
   // return  <></>
 }
-
+/* function gltfLoad(){
+  return <>
+  
+  </>
+} */
 export default GLTFLoaderFun;

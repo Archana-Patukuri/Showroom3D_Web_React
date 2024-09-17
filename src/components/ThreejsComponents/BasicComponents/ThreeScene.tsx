@@ -13,7 +13,7 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 // import PostProcessing from "../PostProcessing/post-processing";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import * as THREE from "three";
-// import DragAndDrop from "../DragAndDrop/DragAndDrop";
+import DragAndDrop from "../DragAndDrop/DragAndDrop";
 
 let container: any, labelRenderer: any;
 const ThreeScene = () => {
@@ -52,7 +52,7 @@ const ThreeScene = () => {
     } finally {
     }
   };
-  // DragAndDrop();
+  DragAndDrop();
   HdriLoad();
   useEffect(() => {
     fetchData();
