@@ -11,6 +11,7 @@ import HorizontalTabs from "./horizontalTab.component";
 import "./verticalTab.styles.css";
 import UnstyledTabsCustomized from "./horizontalTabs";
 import AdvancedItems from "../../ThreejsComponents/Advanced/AdvancedItems";
+import { useNavigate } from 'react-router-dom';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -18,7 +19,7 @@ interface TabPanelProps {
   value: number;
 }
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props;  
 
   return (
     <div
@@ -54,6 +55,7 @@ function a11yProps(index: any) {
 
 const VerticalTabs = () => {
   const [value, setValue] = React.useState(0);
+  const navigate=useNavigate()
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     console.log(event);
@@ -99,25 +101,29 @@ const VerticalTabs = () => {
           label="Sample Room"
           {...a11yProps(0)}
           className="top_buttons"
+          onClick={()=>{navigate('/SampleRoom')}}   
         />
         <CustomTab
           label="Furniture"
           {...a11yProps(1)}
           className="top_buttons"
+          onClick={()=>{navigate('/Furniture')}}  
         />
-        <CustomTab label="Lighting" {...a11yProps(2)} className="top_buttons" />
-        <CustomTab label="Paints" {...a11yProps(3)} className="top_buttons" />
-        <CustomTab label="Tiles" {...a11yProps(4)} className="top_buttons" />
-        <CustomTab label="Carpets" {...a11yProps(5)} className="top_buttons" />
+        <CustomTab label="Lighting" {...a11yProps(2)} className="top_buttons" onClick={()=>{navigate('/Lighting')}}  />
+        <CustomTab label="Paints" {...a11yProps(3)} className="top_buttons" onClick={()=>{navigate('/Paints')}}  />
+        <CustomTab label="Tiles" {...a11yProps(4)} className="top_buttons" onClick={()=>{navigate('/Tiles')}}  />
+        <CustomTab label="Carpets" {...a11yProps(5)} className="top_buttons" onClick={()=>{navigate('/Carpets')}}  />
         <CustomTab
           label="Doors/Windows"
           {...a11yProps(6)}
           className="top_buttons"
+          onClick={()=>{navigate('/DoorsWindows')}}  
         />
         <CustomTab
           label="Accessories"
           {...a11yProps(7)}
           className="top_buttons"
+          onClick={()=>{navigate('/Accessories')}}  
         />
 
         <Tab
@@ -125,28 +131,33 @@ const VerticalTabs = () => {
           {...a11yProps(8)}
           style={{ marginTop: "30vh" }}
           className="bottom_buttons"
+          onClick={()=>{navigate('/360Spins')}}  
         />
         <Tab
           label="Measurements"
           {...a11yProps(9)}
           className="bottom_buttons"
+          onClick={()=>{navigate('/Measurements')}}  
         />
-        <Tab label="HD Render" {...a11yProps(10)} className="bottom_buttons" />
+        <Tab label="HD Render" {...a11yProps(10)} className="bottom_buttons" onClick={()=>{navigate('/HDRender')}}  />
         <Tab
           label="Collaboration"
           {...a11yProps(11)}
           className="bottom_buttons"
+          onClick={()=>{navigate('/Furniture')}}  
         />
-        <Tab label="Advanced" {...a11yProps(12)} className="bottom_buttons" />
+        <Tab label="Advanced" {...a11yProps(12)} className="bottom_buttons" onClick={()=>{navigate('/Collaboration')}}  />
         <Tab
           label="Open Project"
           {...a11yProps(13)}
           className="bottom_buttons"
+          onClick={()=>{navigate('/OpenProject')}}  
         />
         <Tab
           label="Save Project"
           {...a11yProps(14)}
           className="bottom_buttons"
+          onClick={()=>{navigate('/SaveProject')}}  
         />
       </Tabs>
       <TabPanel value={value} index={0}>

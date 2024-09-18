@@ -4,9 +4,12 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './accordion.css'
+import { useNavigate } from 'react-router-dom';
 
 export default function AccordionUsage(accordionProps:any) {
     const {accordionLabel,accordionDetails}=accordionProps    
+    const navigate=useNavigate()
+
   return (
     <div>    
       {accordionLabel==='Navigation'?<Accordion style={{maxWidth:"15vw",margin:"0px"}} className='accordion-container' defaultExpanded >
@@ -14,7 +17,8 @@ export default function AccordionUsage(accordionProps:any) {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel-content"
           id="panel-header"
-          className='accordion-label'                
+          className='accordion-label'  
+          onClick={()=>{navigate(`/${accordionLabel}`)}}              
         >
           {accordionLabel}
         </AccordionSummary>
@@ -27,6 +31,7 @@ export default function AccordionUsage(accordionProps:any) {
           aria-controls="panel-content"
           id="panel-header"
           className='accordion-label'
+          onClick={()=>{navigate(`/${accordionLabel}`)}}
         >
           {accordionLabel}
         </AccordionSummary>
