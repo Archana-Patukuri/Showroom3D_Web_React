@@ -4,7 +4,7 @@ import AddModelFun from "../../Themes/Themes";
 import GLTFMaterialsVariantsExtension from "three-gltf-extensions/loaders/KHR_materials_variants/KHR_materials_variants";
 import * as THREE from "three";
 
-async function GLTFLoaderFun(scene, url) {
+async function GLTFLoaderFun1(scene, url) {
   const dracoLoader = new DRACOLoader();
   dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
   const loader = new GLTFLoader();
@@ -82,4 +82,4 @@ async function GLTFLoaderFun(scene, url) {
   
   </>
 } */
-export default GLTFLoaderFun;
+export default GLTFLoaderFun1;

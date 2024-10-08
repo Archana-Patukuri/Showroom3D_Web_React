@@ -55,7 +55,7 @@ const DayNightSwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function CustomDayNightSwitch() {
-  let {scene,renderer,background0,background1}=useContext(BasicContext)    
+  let {scene,renderer,background0,background1,hdri1,hdri2}=useContext(BasicContext)    
   
   const dispatch = useDispatch();
   const { day } = useSelector((state: any) => state.dayNightSlice);
@@ -64,15 +64,24 @@ export default function CustomDayNightSwitch() {
     let sun:any=scene.getObjectByName('Sun')   
     dispatch(dayNightToggle());     
      if(day && sun){      
-      sun.intensity=2
+      sun.intensity=20
       sun.castShadow=true;
-      renderer.toneMappingExposure=0.1
-      scene.background=background1      
+      scene.traverse(function (child:any) {              
+        if (child.isMesh) {
+          child.castShadow = true; 
+          child.receiveShadow = true;                                   
+        }      
+      }); 
+      renderer.toneMappingExposure=0.5
+      scene.background=background1  
+      scene.environment=hdri2    
       console.log('day')
     }else{
       sun.intensity=0      
-      renderer.toneMappingExposure=0.01
-      scene.background=background0      
+      renderer.toneMappingExposure=0.5
+      scene.background=background0  
+      scene.environment=hdri1
+      console.log('night')    
     } 
   }
 
